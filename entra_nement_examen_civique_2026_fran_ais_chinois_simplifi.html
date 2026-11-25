@@ -1,0 +1,2205 @@
+<!-- ... existing code ... -->
+  <title>Examen Civique 2026 — Entraînement Officiel (FR / 简体中文)</title>
+  <meta name="description" content="Plateforme interactive bilingue (Français / Chinois simplifié) d'entraînement à l'examen civique français 2026 : QCM officiel 40 questions, corrigé bilingue et fiches de révision." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '"Noto Sans SC"', 'PingFang SC', 'Microsoft YaHei', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            marianne: {
+              DEFAULT: '#000091',
+              hover: '#1212ff',
+              light: '#f5f5fe',
+              border: '#cacafb',
+            },
+            franceRed: {
+              DEFAULT: '#E1000F',
+              light: '#fef4f4',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+      background-color: #f6f7f9;
+      color: #161616;
+    }
+    .tricolor-bar {
+      background: linear-gradient(90deg, #000091 0%, #000091 33.33%, #ffffff 33.33%, #ffffff 66.66%, #E1000F 66.66%, #E1000F 100%);
+    }
+    .fade-in {
+      animation: fadeIn 0.25s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+    /* Styles d'impression propres pour le récapitulatif bilingue */
+    @media print {
+      body { background: #ffffff !important; color: #000000 !important; }
+      header, footer, .no-print, #toast-container, #exam-confirm-modal { display: none !important; }
+      main { max-width: 100% !important; padding: 0 !important; margin: 0 !important; }
+      #exam-results { display: block !important; }
+      #exam-verdict-card, .review-item-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #cbd5e1 !important;
+        margin-bottom: 12px !important;
+      }
+    }
+  </style>
+</head>
+<!-- ... existing code ... -->
+            <div>
+              <div class="flex items-center gap-2">
+                <h1 class="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight leading-tight">
+                  Examen Civique Français
+                </h1>
+                <span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-marianne-light text-marianne border border-marianne-border">
+                  FR / 简体中文
+                </span>
+              </div>
+              <p class="text-xs text-slate-500 mt-0.5">Carte de Résident (10 ans) &amp; Naturalisation</p>
+            </div>
+<!-- ... existing code ... -->
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            Préparez et réussissez l'examen civique républicain
+          </h2>
+          <p class="text-slate-600 mt-3 text-sm sm:text-base leading-relaxed">
+            Entraînez-vous dans les conditions réelles de l'épreuve numérique exigée pour la première demande de <strong>carte de résident de 10 ans</strong> et la <strong>naturalisation française</strong>. Banque complète de <strong id="hero-q-count">80 questions</strong> officielles avec <strong>corrigé intégral et traduction en chinois simplifié (简体中文)</strong> à la fin du test.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+<!-- ... existing code ... -->
+          <p class="text-xs text-slate-500 pt-2 border-t border-slate-200">
+            Vous disposez de <strong>45 minutes</strong>. À la fin du test, vous obtiendrez un <strong>récapitulatif complet avec le corrigé détaillé et la traduction intégrale en chinois simplifié (简体中文)</strong> de toutes les questions et réponses.
+          </p>
+        </div>
+<!-- ... existing code ... -->
+      <!-- Résultats détaillés de l'examen -->
+      <div id="exam-results" class="hidden space-y-6">
+        <div id="exam-verdict-card" class="rounded-2xl border p-6 sm:p-8 shadow-sm bg-white"></div>
+
+        <!-- Bilan par thématique -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm">
+          <h3 class="text-base font-extrabold text-slate-900 mb-3">
+            Score détaillé par thématique <span class="text-xs font-normal text-slate-500 ml-1">/ 各主题得分详情</span>
+          </h3>
+          <div id="exam-theme-breakdown" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3"></div>
+        </div>
+
+        <!-- Récapitulatif intégral des 40 questions avec traduction chinois simplifié -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-5 pb-4 border-b border-slate-100">
+            <div>
+              <h3 class="text-lg font-extrabold text-slate-900">
+                Récapitulatif intégral &amp; Corrigé bilingue (FR / 简体中文)
+              </h3>
+              <p class="text-xs text-slate-500 mt-0.5">
+                Toutes les questions du QCM, vos choix, les bonnes réponses et les explications traduites en chinois simplifié.
+              </p>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 no-print">
+              <button onclick="toggleExamZh()" id="exam-zh-toggle-btn" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300 hover:bg-amber-200 transition">
+                简体中文 : Activé
+              </button>
+              <button onclick="filterExamReview('all')" id="rev-filter-all" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-marianne text-white">
+                Toutes (40)
+              </button>
+              <button onclick="filterExamReview('wrong')" id="rev-filter-wrong" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">
+                Erreurs
+              </button>
+              <button onclick="filterExamReview('correct')" id="rev-filter-correct" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">
+                Réussies
+              </button>
+              <button onclick="window.print()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-white hover:bg-slate-900 transition flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                Imprimer / PDF
+              </button>
+            </div>
+          </div>
+          <div id="exam-review-list" class="space-y-5"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ONGLET 3 : ENTRAÎNEMENT PAR THÈME ==================== -->
+    <section id="view-entrainement" class="view-section hidden fade-in space-y-5">
+      <!-- Barre de filtres thématiques -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-slate-900">Entraînement interactif par thème</h2>
+            <p class="text-xs text-slate-500">Correction immédiate avec explication officielle et aide en chinois simplifié (简体中文).</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2 text-xs font-semibold">
+            <button onclick="togglePracticeZh()" id="prac-zh-toggle-btn" class="px-3 py-1.5 rounded-lg bg-amber-100 text-amber-900 border border-amber-300 hover:bg-amber-200 transition">
+              Aide 简体中文 : Activée
+            </button>
+            <span class="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200" id="practice-session-score">
+              Score session : 0 / 0
+            </span>
+            <button onclick="shufflePractice()" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">
+              Mélanger
+            </button>
+          </div>
+        </div>
+        <div id="practice-theme-pills" class="flex flex-wrap gap-2"></div>
+      </div>
+
+      <!-- Zone de question d'entraînement -->
+      <div id="practice-card" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm max-w-4xl mx-auto">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+          <div class="flex flex-wrap items-center gap-2">
+            <span id="prac-theme-badge" class="px-2.5 py-1 rounded-md bg-marianne-light text-marianne text-xs font-bold"></span>
+            <span id="prac-situation-badge" class="hidden px-2.5 py-1 rounded-md bg-amber-50 text-amber-800 border border-amber-200 text-xs font-semibold">
+              Mise en situation / 情景模拟
+            </span>
+          </div>
+          <span id="prac-counter" class="text-xs font-bold text-slate-400">Question 1 / 80</span>
+        </div>
+
+        <h3 id="prac-question-text" class="text-lg sm:text-xl font-bold text-slate-900 leading-snug mb-1.5"></h3>
+        <p id="prac-question-zh" class="text-sm sm:text-base font-medium text-slate-600 mb-6"></p>
+
+        <div id="prac-options" class="space-y-3"></div>
+<!-- ... existing code ... -->
+    <!-- ==================== ONGLET 4 : FICHES DE RÉVISION (TOUTES LES Q&R) ==================== -->
+    <section id="view-revision" class="view-section hidden fade-in space-y-5">
+      <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-slate-900">Fiches Questions &amp; Réponses Bilingues (FR / 简体中文)</h2>
+            <p class="text-xs text-slate-500">Consultez l'intégralité des 80 questions, les 4 choix, les bonnes réponses et les explications en français et en chinois simplifié.</p>
+          </div>
+          <!-- Barre de recherche -->
+          <div class="relative w-full md:w-80">
+            <input type="text" id="revision-search" oninput="renderRevisionList()" placeholder="Rechercher (FR ou 中文 : ex. laïcité, 世俗化...)" class="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-marianne focus:ring-2 focus:ring-marianne/15" />
+            <svg class="w-4 h-4 text-slate-400 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+        </div>
+
+        <!-- Filtres par thème -->
+        <div id="revision-theme-pills" class="flex flex-wrap gap-2"></div>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-between gap-2 px-1">
+        <span id="revision-count-label" class="text-xs font-semibold text-slate-500">Affichage de 80 questions</span>
+        <div class="flex items-center gap-3">
+          <button onclick="toggleRevisionAllOptions()" id="toggle-all-opt-btn" class="text-xs font-semibold text-slate-600 hover:text-marianne underline">
+            Afficher/Masquer les 4 choix
+          </button>
+          <button onclick="toggleAllExplanations()" id="toggle-all-exp-btn" class="text-xs font-semibold text-marianne hover:underline">
+            Masquer/Afficher les explications
+          </button>
+        </div>
+      </div>
+
+      <!-- Liste des fiches -->
+      <div id="revision-list" class="space-y-3.5"></div>
+    </section>
+<!-- ... existing code ... -->
+  <script>
+    // =========================================================================
+    // 1. BANQUE DE 80 QUESTIONS OFFICIELLES BILINGUES (FRANÇAIS + 简体中文)
+    // =========================================================================
+    const THEMES = {
+      valeurs: {
+        id: 'valeurs',
+        name: 'Principes et valeurs de la République',
+        name_zh: '共和国的原则与价值观',
+        short: 'Principes & Valeurs',
+        examQuota: 11,
+        description: 'Devise, symboles, laïcité (loi de 1905), égalité femmes-hommes, non-discrimination.'
+      },
+      institutions: {
+        id: 'institutions',
+        name: 'Système institutionnel et politique',
+        name_zh: '政治与制度体系',
+        short: 'Institutions & Politique',
+        examQuota: 6,
+        description: 'Ve République, Président, Parlement, séparation des pouvoirs, collectivités, Union européenne.'
+      },
+      droits: {
+        id: 'droits',
+        name: 'Droits et devoirs du citoyen',
+        name_zh: '公民的权利与义务',
+        short: 'Droits & Devoirs',
+        examQuota: 11,
+        description: 'DDHC 1789, Constitution 1958, respect de la loi, infractions, impôts, solidarité.'
+      },
+      histoire: {
+        id: 'histoire',
+        name: 'Histoire, géographie et culture',
+        name_zh: '法国历史、地理与文化',
+        short: 'Histoire, Géo & Culture',
+        examQuota: 8,
+        description: 'Dates clés (1789, 1848, 1944, 1958), Guerres mondiales, fleuves, outre-mer, patrimoine.'
+      },
+      societe: {
+        id: 'societe',
+        name: 'Vivre dans la société française',
+        name_zh: '在法国社会生活',
+        short: 'Vivre en Société',
+        examQuota: 4,
+        description: 'État civil, numéros d\'urgence, école obligatoire, travail déclaré, santé.'
+      }
+    };
+
+    const QUESTIONS = [
+      // --- THÈME 1 : PRINCIPES ET VALEURS DE LA RÉPUBLIQUE ---
+      {
+        id: 1,
+        theme: 'valeurs',
+        isSituation: false,
+        q: "Quelle est la devise officielle de la République française ?",
+        q_zh: "法兰西共和国的官方格言是什么？",
+        options: [
+          "Liberté, Égalité, Fraternité",
+          "Travail, Famille, Patrie",
+          "Unité, Justice, Solidarité",
+          "Liberté, Laïcité, Démocratie"
+        ],
+        options_zh: [
+          "自由、平等、博爱",
+          "劳动、家庭、祖国",
+          "团结、正义、互助",
+          "自由、世俗、民主"
+        ],
+        answer: 0,
+        explanation: "Inscrite à l'article 2 de la Constitution de 1958, la devise « Liberté, Égalité, Fraternité » est héritée de la Révolution française de 1789 et figure sur les frontons des mairies et des écoles publiques.",
+        explanation_zh: "1958年宪法第2条规定，法国的格言是“自由、平等、博爱”（Liberté, Égalité, Fraternité）。它源自1789年法国大革命，刻在所有市政厅和公立学校的门楣上。"
+      },
+      {
+        id: 2,
+        theme: 'valeurs',
+        isSituation: false,
+        q: "Que signifie le principe de laïcité en France, garanti notamment par la loi du 9 décembre 1905 ?",
+        q_zh: "法国《1905年12月9日法律》所保障的“世俗化（政教分离）”原则是什么意思？",
+        options: [
+          "L'interdiction de pratiquer une religion sur le territoire français",
+          "La séparation des Églises et de l'État, garantissant la liberté de conscience et la neutralité des services publics",
+          "L'obligation pour tous les citoyens d'être athées",
+          "Le financement des lieux de culte par les mairies"
+        ],
+        options_zh: [
+          "禁止在法国领土上信奉任何宗教",
+          "政教分离，保障信仰自由以及公共服务的中立性",
+          "强制所有公民成为无神论者",
+          "由市政厅出资资助宗教场所"
+        ],
+        answer: 1,
+        explanation: "La laïcité garantit à chacun la liberté de croire ou de ne pas croire. L'État est neutre, ne reconnaît ni ne subventionne aucun culte (hors régimes locaux spécifiques) et assure l'égalité de tous devant la loi quelle que soit leur conviction.",
+        explanation_zh: "世俗化原则保障每个人信仰或不信仰宗教的自由。国家保持中立，不承认也不资助任何宗教（特定地方制度除外），并确保所有人在法律面前一律平等。"
+      },
+      {
+        id: 3,
+        theme: 'valeurs',
+        isSituation: false,
+        q: "Qui est Marianne, l'un des symboles majeurs de la République française ?",
+        q_zh: "法兰西共和国的重要象征之一“玛丽安娜（Marianne）”是谁？",
+        options: [
+          "La première femme présidente de la République",
+          "Une figure féminine coiffée du bonnet phrygien incarnant la République et la liberté",
+          "L'auteure de l'hymne national français",
+          "La reine de France pendant la Révolution"
+        ],
+        options_zh: [
+          "法国第一位女总统",
+          "头戴弗里吉亚帽、象征共和国与自由的女性形象",
+          "法国国歌的作者",
+          "法国大革命时期的王后"
+        ],
+        answer: 1,
+        explanation: "Marianne est l'allégorie féminine de la République française. Coiffée du bonnet phrygien (symbole des esclaves affranchis), son buste est présent dans toutes les mairies de France.",
+        explanation_zh: "玛丽安娜是法兰西共和国的女性化身，她头戴象征获得解放的奴隶的弗里吉亚帽，其半身雕像摆放在法国每一座市政厅内。"
+      },
+      {
+        id: 4,
+        theme: 'valeurs',
+        isSituation: false,
+        q: "Quel est l'hymne national de la France et qui l'a composé en 1792 ?",
+        q_zh: "法国的国歌是什么？由谁在1792年创作？",
+        options: [
+          "Le Chant du Départ, par Étienne Méhul",
+          "La Marseillaise, composée par Rouget de Lisle",
+          "L'Ode à la Joie, par Beethoven",
+          "La Carmagnole, par Victor Hugo"
+        ],
+        options_zh: [
+          "《出发之歌》，由艾蒂安·梅于尔创作",
+          "《马赛曲》，由鲁热·德·李尔创作",
+          "《欢乐颂》，由贝多芬创作",
+          "《卡马尼奥勒舞曲》，由维克多·雨果创作"
+        ],
+        answer: 1,
+        explanation: "La Marseillaise a été écrite et composée à Strasbourg en avril 1792 par Claude Joseph Rouget de Lisle comme chant de guerre pour l'armée du Rhin, avant d'être adoptée par les fédérés marseillais.",
+        explanation_zh: "《马赛曲》由克洛德·约瑟夫·鲁热·德·李尔于1792年4月在斯特拉斯堡为莱茵军团创作，后因马赛志愿军传唱而得名并成为法国国歌。"
+      },
+      {
+        id: 5,
+        theme: 'valeurs',
+        isSituation: false,
+        q: "Quelles sont les trois couleurs du drapeau français, de la hampe (mât) vers l'extérieur ?",
+        q_zh: "法国国旗从旗杆一侧向外依次是哪三种颜色？",
+        options: [
+          "Rouge, blanc, bleu",
+          "Bleu, blanc, rouge",
+          "Blanc, bleu, rouge",
+          "Bleu, rouge, blanc"
+        ],
+        options_zh: [
+          "红、白、蓝",
+          "蓝、白、红",
+          "白、蓝、红",
+          "蓝、红、白"
+        ],
+        answer: 1,
+        explanation: "Le drapeau tricolore est composé de trois bandes verticales égales : bleu (du côté du mât), blanc (au centre) et rouge (à l'extérieur). Il associe le blanc de la monarchie au bleu et rouge de la ville de Paris.",
+        explanation_zh: "法国三色旗由三条等宽的竖条组成：靠旗杆一侧为蓝色，中间为白色，外侧为红色。它将王室的白色与巴黎市的蓝色和红色结合在一起。"
+      },
+      {
+        id: 6,
+        theme: 'valeurs',
+        isSituation: false,
+        q: "Quelle est la langue officielle de la République française selon l'article 2 de la Constitution ?",
+        q_zh: "根据《宪法》第2条，法兰西共和国的官方语言是什么？",
+        options: [
+          "Le français et l'anglais",
+          "Le français",
+          "Le français et les langues régionales",
+          "Aucune langue officielle n'est inscrite dans la Constitution"
+        ],
+        options_zh: [
+          "法语和英语",
+          "法语",
+          "法语和地方方言",
+          "宪法中没有规定官方语言"
+        ],
+        answer: 1,
+        explanation: "L'article 2 de la Constitution dispose que « La langue de la République est le français ». C'est la langue de l'administration, de la justice, de l'enseignement public et de la vie civique.",
+        explanation_zh: "法国宪法第2条明确规定：“共和国的语言是法语。”法语是行政机关、司法、公立教育和公民生活的官方语言。"
+      },
+      {
+        id: 7,
+        theme: 'valeurs',
+        isSituation: false,
+        q: "Que dit la loi française concernant la polygamie et la répudiation unilatérale ?",
+        q_zh: "法国法律对一夫多妻制和单方面休妻有何规定？",
+        options: [
+          "Elles sont autorisées si le mariage a été célébré à l'étranger",
+          "Elles sont strictement interdites et contraires à l'ordre public et à l'égalité entre les femmes et les hommes",
+          "Elles sont tolérées sous réserve d'accord du maire",
+          "Seule la polygamie est autorisée"
+        ],
+        options_zh: [
+          "如果在国外结婚则允许",
+          "严格禁止，这违背公共秩序和男女平等原则",
+          "只要市长同意即可容忍",
+          "仅允许一夫多妻制"
+        ],
+        answer: 1,
+        explanation: "En France, le mariage est strictement monogame et repose sur le consentement libre et égal des deux époux. La polygamie est un délit pénal et empêche la délivrance ou le renouvellement d'un titre de séjour.",
+        explanation_zh: "在法国，婚姻严格实行一夫一妻制，并建立在双方自由和平等同意的基础上。重婚/一夫多妻属于刑事犯罪，且会导致无法获得或续签居留证。"
+      },
+      {
+        id: 8,
+        theme: 'valeurs',
+        isSituation: false,
+        q: "Qu'est-ce que l'égalité entre les femmes et les hommes en France ?",
+        q_zh: "在法国，“男女平等”原则意味着什么？",
+        options: [
+          "Un principe constitutionnel garantissant les mêmes droits civils, politiques, professionnels et familiaux",
+          "Une simple recommandation morale sans valeur juridique",
+          "Un droit réservé uniquement aux personnes de nationalité française",
+          "Un principe qui ne s'applique pas au sein du couple"
+        ],
+        options_zh: [
+          "一项宪法原则，保障男女在民事、政治、职业和家庭领域享有完全相同的权利",
+          "仅是一项没有法律效力的道德建议",
+          "仅限于法国国籍人士享有的权利",
+          "不适用于夫妻家庭内部的原则"
+        ],
+        answer: 0,
+        explanation: "Le préambule de la Constitution de 1946 garantit à la femme, dans tous les domaines, des droits égaux à ceux de l'homme (vote, travail, salaire, autorité parentale, gestion des biens).",
+        explanation_zh: "1946年宪法序言保障女性在所有领域享有与男性平等的权利（选举权、工作权、同工同酬、父母亲权及财产管理权等）。"
+      },
+      {
+        id: 9,
+        theme: 'valeurs',
+        isSituation: false,
+        q: "Que célèbre-t-on lors de la fête nationale du 14 juillet ?",
+        q_zh: "7月14日法国国庆日纪念的是什么历史事件？",
+        options: [
+          "L'armistice de la Première Guerre mondiale",
+          "La prise de la Bastille (14 juillet 1789) et la Fête de la Fédération (14 juillet 1790)",
+          "La promulgation de la Constitution de 1958",
+          "L'abolition de l'esclavage"
+        ],
+        options_zh: [
+          "第一次世界大战停战日",
+          "攻占巴士底狱（1789年7月14日）与联盟节（1790年7月14日）",
+          "1958年宪法的颁布",
+          "废除奴隶制"
+        ],
+        answer: 1,
+        explanation: "Le 14 juillet commémore à la fois la prise de la Bastille en 1789 (symbole de la fin de la monarchie absolue) et la Fête de la Fédération en 1790 (symbole de l'unité nationale).",
+        explanation_zh: "7月14日同时纪念1789年攻占巴士底狱（象征绝对君主制的终结）和1790年联盟节（象征民族团结）。"
+      },
+      {
+        id: 10,
+        theme: 'valeurs',
+        isSituation: false,
+        q: "En France, la liberté d'expression permet-elle de tout dire sans aucune limite ?",
+        q_zh: "在法国，言论自由是否允许毫无限制地说任何话？",
+        options: [
+          "Oui, la liberté d'expression est totalement illimitée",
+          "Non, la loi interdit notamment la diffamation, l'injure, l'incitation à la haine raciale ou religieuse et l'apologie du terrorisme",
+          "Oui, sauf à la télévision publique",
+          "Non, il est interdit de critiquer le gouvernement"
+        ],
+        options_zh: [
+          "是的，言论自由完全没有任何限制",
+          "不是，法律严禁诽谤、侮辱、煽动种族或宗教仇恨以及宣扬恐怖主义",
+          "是的，但公共电视台除外",
+          "不是，禁止批评政府"
+        ],
+        answer: 1,
+        explanation: "La liberté d'expression est un droit fondamental (article 11 de la DDHC de 1789), mais la loi en réprime les abus : propos racistes, antisémites, homophobes, diffamation, injure publique ou incitation à la violence.",
+        explanation_zh: "言论自由是基本权利（1789年《人权宣言》第11条），但法律惩处滥用行为，如种族主义、反犹太、恐同言论、诽谤、公开侮辱或煽动暴力。"
+      },
+      {
+        id: 11,
+        theme: 'valeurs',
+        isSituation: false,
+        q: "Que signifie la formule « la France est une République indivisible, laïque, démocratique et sociale » ?",
+        q_zh: "宪法中“法国是一个不可分割的、世俗的、民主的和社会性的共和国”这句话是什么意思？",
+        options: [
+          "La loi est la même pour tous sur tout le territoire, l'État est neutre, le pouvoir appartient au peuple et l'État organise la solidarité",
+          "Chaque région peut créer ses propres lois pénales",
+          "Seuls les citoyens les plus riches peuvent voter",
+          "Les religions participent au vote des lois"
+        ],
+        options_zh: [
+          "全国法律统一适用于所有人、国家保持宗教中立、权力属于人民、国家组织社会保障与互助",
+          "每个大区都可以制定自己的刑法",
+          "只有最富有的公民才能投票",
+          "宗教团体参与法律投票"
+        ],
+        answer: 0,
+        explanation: "L'article 1er de la Constitution définit ces quatre piliers fondamentaux : unité juridique du territoire (indivisible), neutralité religieuse (laïque), souveraineté populaire (démocratique) et solidarité nationale (sociale).",
+        explanation_zh: "宪法第1条确立了四大基石：领土与法律统一（不可分割）、宗教中立（世俗的）、人民主权（民主的）以及国家社会保障（社会性的）。"
+      },
+      {
+        id: 12,
+        theme: 'valeurs',
+        isSituation: true,
+        q: "[Mise en situation] Un agent d'accueil d'une mairie porte un signe religieux ostensible pendant son service. Est-ce autorisé ?",
+        q_zh: "【情景模拟】一名市政厅接待处工作人员在工作期间佩戴明显的宗教标志。这是否被允许？",
+        options: [
+          "Oui, au nom de la liberté de religion",
+          "Non, tout agent du service public est soumis à une stricte obligation de neutralité religieuse, politique et philosophique",
+          "Oui, si le maire l'autorise par écrit",
+          "Uniquement le vendredi et le dimanche"
+        ],
+        options_zh: [
+          "允许，以宗教自由的名义",
+          "不允许，所有公共服务人员都必须严格遵守宗教、政治和哲学中立义务",
+          "允许，只要市长书面批准即可",
+          "仅在周五和周日允许"
+        ],
+        answer: 1,
+        explanation: "En vertu du principe de laïcité et de neutralité du service public, les agents publics (fonctionnaires ou contractuels) n'ont pas le droit de manifester leurs convictions religieuses dans l'exercice de leurs fonctions.",
+        explanation_zh: "根据世俗化和公共服务中立原则，公职人员（公务员或合同工）在履行职务期间无权展示其宗教信仰。"
+      },
+      {
+        id: 13,
+        theme: 'valeurs',
+        isSituation: true,
+        q: "[Mise en situation] Une usagère portant un voile ou une croix visible entre dans une préfecture ou une mairie pour faire une démarche administrative. A-t-elle le droit d'être accueillie ?",
+        q_zh: "【情景模拟】一位佩戴头巾或明显十字架的办事群众进入省政府（警察局）或市政厅办理行政手续。她是否有权获得接待？",
+        options: [
+          "Non, les signes religieux sont interdits aux usagers dans toutes les administrations",
+          "Oui, les usagers des services publics (hors écoles/collèges/lycées publics) sont libres d'exprimer leurs convictions, tant qu'ils ne troublent pas l'ordre public et ont le visage découvert",
+          "Uniquement si elle paie une taxe supplémentaire",
+          "Non, la loi de 1905 interdit tout signe religieux dans la rue et les mairies"
+        ],
+        options_zh: [
+          "无权，所有行政机构都禁止办事群众佩戴宗教标志",
+          "有权，公共服务使用者（公立中小学除外）只要不扰乱公共秩序且未遮盖面部，就有权表达个人信仰",
+          "只有支付额外税费才可以",
+          "无权，1905年法律禁止在街头和市政厅佩戴任何宗教标志"
+        ],
+        answer: 1,
+        explanation: "La neutralité s'impose aux agents publics, pas aux usagers des administrations (mairies, préfectures, hôpitaux). En revanche, la loi de 2010 interdit la dissimulation du visage dans l'espace public.",
+        explanation_zh: "中立义务约束的是公职人员，而非行政机关（市政厅、省政府、医院）的办事群众。但2010年法律禁止在公共场所遮盖面部（如蒙面纱）。"
+      },
+      {
+        id: 14,
+        theme: 'valeurs',
+        isSituation: true,
+        q: "[Mise en situation] À l'école publique (primaire, collège, lycée), un élève porte un signe religieux ostensible. Quelle est la règle ?",
+        q_zh: "【情景模拟】在公立学校（小学、初中、高中），一名学生佩戴明显的宗教标志。法国的规定是什么？",
+        options: [
+          "C'est autorisé dans toutes les classes",
+          "C'est interdit par la loi du 15 mars 2004 afin de protéger la liberté de conscience des élèves",
+          "C'est autorisé uniquement pendant les cours de sport",
+          "C'est laissé au choix du professeur principal"
+        ],
+        options_zh: [
+          "所有班级都允许",
+          "《2004年3月15日法律》予以禁止，以保护学生的良心与信仰自由",
+          "仅在体育课期间允许",
+          "由班主任自行决定"
+        ],
+        answer: 1,
+        explanation: "La loi du 15 mars 2004 interdit le port de signes ou tenues par lesquels les élèves manifestent ostensiblement une appartenance religieuse dans les écoles, collèges et lycées publics.",
+        explanation_zh: "《2004年3月15日法律》禁止学生在公立小学、初中和高中佩戴明显表明宗教归属的标志或服饰。"
+      },
+      {
+        id: 15,
+        theme: 'valeurs',
+        isSituation: true,
+        q: "[Mise en situation] Un employeur refuse d'embaucher un candidat uniquement en raison de son origine ou de son nom de famille. Que dit la loi ?",
+        q_zh: "【情景模拟】一名雇主仅因求职者的出身或姓氏而拒绝录用。法律对此有何规定？",
+        options: [
+          "L'employeur est libre de choisir selon l'origine",
+          "C'est une discrimination illégale punie par le Code pénal (jusqu'à 3 ans de prison et 45 000 € d'amende)",
+          "C'est autorisé dans les petites entreprises de moins de 10 salariés",
+          "Ce n'est illégal que dans la fonction publique"
+        ],
+        options_zh: [
+          "雇主有权根据出身自由选择",
+          "这是《刑法典》惩处的非法歧视行为（最高可判处3年监禁及45,000欧元罚款）",
+          "在员工少于10人的小企业中是允许的",
+          "仅在公务员体系中才属于违法"
+        ],
+        answer: 1,
+        explanation: "La discrimination à l'embauche fondée sur l'origine, le sexe, la religion, le handicap ou l'orientation sexuelle est un délit pénal. La victime peut saisir le Défenseur des droits ou le conseil de prud'hommes.",
+        explanation_zh: "基于出身、性别、宗教、残疾或性取向的招聘歧视属于刑事犯罪。受害者可向“权利捍卫者”（Défenseur des droits）或劳资调解委员会申诉。"
+      },
+      {
+        id: 16,
+        theme: 'valeurs',
+        isSituation: true,
+        q: "[Mise en situation] À l'hôpital public, un patient refuse d'être soigné par un médecin en raison de son sexe. Que doit faire l'équipe médicale ?",
+        q_zh: "【情景模拟】在公立医院，一名患者因医生的性别而拒绝接受治疗。医疗团队应当如何处理？",
+        options: [
+          "Accepter systématiquement même en cas d'urgence vitale",
+          "Rappeler le principe d'égalité et de non-discrimination : un patient ne peut pas récuser un soignant pour un motif discriminatoire, surtout en cas d'urgence",
+          "Refuser définitivement de soigner le patient",
+          "Appeler immédiatement le tribunal administratif"
+        ],
+        options_zh: [
+          "即使在危及生命的紧急情况下也无条件接受",
+          "重申平等与反歧视原则：患者不得以歧视性理由拒绝医护人员（尤其在紧急情况下）",
+          "永久拒绝治疗该患者",
+          "立即致电行政法院"
+        ],
+        answer: 1,
+        explanation: "Le service public hospitalier garantit l'égal accès aux soins sans discrimination. Si le libre choix du praticien existe dans la limite de l'organisation du service, il ne peut jamais justifier une discrimination envers un soignant.",
+        explanation_zh: "公立医院服务保障无歧视的平等就医权。虽然患者在服务组织允许范围内享有选择医生的自由，但绝不能以此对医护人员进行性别或种族歧视。"
+      },
+      {
+        id: 17,
+        theme: 'valeurs',
+        isSituation: false,
+        q: "Que signifie le principe de « Fraternité » inscrit dans la devise de la République ?",
+        q_zh: "共和国格言中的“博爱（Fraternité）”原则是什么意思？",
+        options: [
+          "L'obligation d'avoir des frères et sœurs",
+          "La solidarité entre les citoyens, traduite notamment par la protection sociale, l'impôt progressif et l'entraide",
+          "Le droit de ne pas payer d'impôts",
+          "L'obligation d'adhérer à une association"
+        ],
+        options_zh: [
+          "必须拥有兄弟姐妹的义务",
+          "公民之间的团结互助，主要体现在社会保障制度、累进税制和相互扶持",
+          "不缴纳税款的权利",
+          "强制加入协会的义务"
+        ],
+        answer: 1,
+        explanation: "La fraternité traduit le lien de solidarité morale et civique entre tous les membres de la société. Le Conseil constitutionnel lui a reconnu valeur constitutionnelle en 2018.",
+        explanation_zh: "“博爱”体现了社会所有成员之间在道德和公民层面的团结纽带。2018年，法国宪法委员会正式赋予博爱原则以宪法效力。"
+      },
+      {
+        id: 18,
+        theme: 'valeurs',
+        isSituation: false,
+        q: "En France, le blasphème (critique ou moquerie d'une religion ou d'un dogme) est-il puni par la loi ?",
+        q_zh: "在法国，“亵渎神明”（批评或讽刺某种宗教或教义）是否会受到法律惩罚？",
+        options: [
+          "Oui, c'est un délit pénal",
+          "Non, le délit de blasphème n'existe pas en France, tant qu'il n'y a pas d'injure ou d'incitation à la haine envers les personnes croyantes",
+          "Oui, mais uniquement envers les religions reconnues",
+          "Oui, il est puni d'une contravention de 5e classe"
+        ],
+        options_zh: [
+          "是的，这是一种刑事犯罪",
+          "不会，法国不存在“亵渎罪”，只要不对信教人群进行人身侮辱或煽动仇恨即可",
+          "是的，但仅限于针对受承认的宗教",
+          "是的，处以五级违警罪罚款"
+        ],
+        answer: 1,
+        explanation: "En France, la liberté d'expression autorise la critique des idées, des philosophies et des religions. En revanche, l'insulte, la diffamation ou l'incitation à la haine envers des personnes en raison de leur religion sont punies par la loi.",
+        explanation_zh: "在法国，言论自由允许批评思想、哲学和宗教教义。但因宗教信仰而对个人进行侮辱、诽谤或煽动仇恨则受法律严惩。"
+      },
+
+      // --- THÈME 2 : SYSTÈME INSTITUTIONNEL ET POLITIQUE ---
+      {
+        id: 19,
+        theme: 'institutions',
+        isSituation: false,
+        q: "Quel est le régime politique actuel de la France et depuis quelle année ?",
+        q_zh: "法国目前的政治体制是什么？始于哪一年？",
+        options: [
+          "La IVe République, depuis 1946",
+          "La Ve République, fondée en 1958 par le général de Gaulle",
+          "La IIIe République, depuis 1875",
+          "La Monarchie constitutionnelle, depuis 1830"
+        ],
+        options_zh: [
+          "第四共和国，始于1946年",
+          "第五共和国，由戴高乐将军于1958年创立",
+          "第三共和国，始于1875年",
+          "君主立宪制，始于1830年"
+        ],
+        answer: 1,
+        explanation: "La France vit sous la Ve République, dont la Constitution a été approuvée par référendum le 28 septembre 1958 et promulguée le 4 octobre 1958.",
+        explanation_zh: "法国目前实行第五共和国体制，其宪法于1958年9月28日经全民公投通过，并于1958年10月4日正式颁布。"
+      },
+      {
+        id: 20,
+        theme: 'institutions',
+        isSituation: false,
+        q: "Pour combien d'années le Président de la République française est-il élu et selon quel mode de scrutin ?",
+        q_zh: "法兰西共和国总统任期为多少年？通过何种选举方式产生？",
+        options: [
+          "7 ans, au suffrage universel indirect",
+          "5 ans (quinquennat), au suffrage universel direct",
+          "4 ans, élu par l'Assemblée nationale",
+          "6 ans, au suffrage universel direct"
+        ],
+        options_zh: [
+          "7年，由间接普选产生",
+          "5年（五年任期制），由直接普选产生",
+          "4年，由国民议会选举产生",
+          "6年，由直接普选产生"
+        ],
+        answer: 1,
+        explanation: "Depuis la réforme constitutionnelle de 2000, le Président de la République est élu pour 5 ans (quinquennat) au suffrage universel direct. Il ne peut exercer plus de deux mandats consécutifs.",
+        explanation_zh: "自2000年修宪以来，法国总统任期为5年，由全体登记选民直接普选产生，最多可连任两届。"
+      },
+      {
+        id: 21,
+        theme: 'institutions',
+        isSituation: false,
+        q: "Quels sont les trois pouvoirs séparés dans une démocratie comme la France ?",
+        q_zh: "在法国这样的民主国家中，三权分立指的是哪三种权力？",
+        options: [
+          "Le pouvoir exécutif, le pouvoir législatif et le pouvoir judiciaire",
+          "Le pouvoir présidentiel, le pouvoir militaire et le pouvoir religieux",
+          "Le pouvoir municipal, le pouvoir régional et le pouvoir européen",
+          "Le pouvoir économique, le pouvoir médiatique et le pouvoir syndical"
+        ],
+        options_zh: [
+          "行政权、立法权和司法权",
+          "总统权、军事权和宗教权",
+          "市镇权、大区权和欧盟权",
+          "经济权、媒体权和工会权"
+        ],
+        answer: 0,
+        explanation: "Théorisée par Montesquieu, la séparation des pouvoirs distingue : le pouvoir exécutif (Président et Gouvernement qui appliquent les lois), le pouvoir législatif (Parlement qui vote les lois) et le pouvoir judiciaire (juges qui sanctionnent le non-respect des lois).",
+        explanation_zh: "由孟德斯鸠提出的三权分立原则区分为：行政权（总统和政府负责执行法律）、立法权（议会负责制定和表决法律）以及司法权（法官负责审判和惩处违法行为）。"
+      },
+      {
+        id: 22,
+        theme: 'institutions',
+        isSituation: false,
+        q: "De quelles deux assemblées est composé le Parlement français ?",
+        q_zh: "法国议会（Parlement）由哪两个议院组成？",
+        options: [
+          "Le Conseil d'État et la Cour de cassation",
+          "L'Assemblée nationale (577 députés) et le Sénat (348 sénateurs)",
+          "Le Gouvernement et le Conseil constitutionnel",
+          "La Chambre des communes et la Chambre des lords"
+        ],
+        options_zh: [
+          "最高行政法院和最高法院",
+          "国民议会（577名国民议会议员）和参议院（348名参议员）",
+          "政府和宪法委员会",
+          "下议院和上议院"
+        ],
+        answer: 1,
+        explanation: "Le Parlement est bicaméral : l'Assemblée nationale siège au Palais-Bourbon (577 députés élus au suffrage universel direct) et le Sénat siège au Palais du Luxembourg (348 sénateurs élus au suffrage universel indirect).",
+        explanation_zh: "法国议会实行两院制：国民议会设在波旁宫（577名议员由直接普选产生），参议院设在卢森堡宫（348名参议员由间接普选产生）。"
+      },
+      {
+        id: 23,
+        theme: 'institutions',
+        isSituation: false,
+        q: "Qui nomme le Premier ministre et dirige l'action du Gouvernement ?",
+        q_zh: "谁负责任命总理？谁负责领导政府的工作？",
+        options: [
+          "Le Président de la République nomme le Premier ministre, qui dirige l'action du Gouvernement",
+          "Le Sénat élit le Premier ministre",
+          "Le Premier ministre est élu directement par les citoyens tous les 5 ans",
+          "Le Conseil constitutionnel désigne le Premier ministre"
+        ],
+        options_zh: [
+          "共和国总统任命总理，总理负责领导政府的工作",
+          "参议院选举产生总理",
+          "总理每5年由公民直接选举产生",
+          "宪法委员会指定总理"
+        ],
+        answer: 0,
+        explanation: "Selon l'article 8 de la Constitution, le Président de la République nomme le Premier ministre et, sur proposition de celui-ci, les autres membres du Gouvernement. Le Premier ministre dirige l'action du Gouvernement (article 21).",
+        explanation_zh: "根据宪法第8条，共和国总统任命总理，并根据总理的提名任命政府其他成员。根据第21条，总理领导政府的工作。"
+      },
+      {
+        id: 24,
+        theme: 'institutions',
+        isSituation: false,
+        q: "Quel est le rôle du Conseil constitutionnel ?",
+        q_zh: "法国宪法委员会（Conseil constitutionnel）的职责是什么？",
+        options: [
+          "Juger les crimes graves aux assises",
+          "Vérifier que les lois votées par le Parlement sont conformes à la Constitution et contrôler la régularité des élections nationales",
+          "Voter le budget annuel de l'État",
+          "Diriger la police nationale"
+        ],
+        options_zh: [
+          "在重罪法庭审判严重刑事犯罪",
+          "审查议会通过的法律是否符合宪法，并监督全国性选举的合法性",
+          "表决国家年度预算",
+          "领导国家警察部队"
+        ],
+        answer: 1,
+        explanation: "Le Conseil constitutionnel (composé de 9 membres nommés pour 9 ans ainsi que des anciens Présidents de la République) veille à la conformité des lois à la Constitution et juge le contentieux des élections présidentielles et législatives.",
+        explanation_zh: "宪法委员会（由9名任期9年的成员及前任总统组成）负责监督法律的合宪性，并裁决总统选举和立法选举的争议。"
+      },
+      {
+        id: 25,
+        theme: 'institutions',
+        isSituation: false,
+        q: "Qui représente l'État dans chaque département français ?",
+        q_zh: "在法国每个省（département）中，谁代表国家（中央政府）？",
+        options: [
+          "Le maire",
+          "Le préfet",
+          "Le président du conseil régional",
+          "Le député"
+        ],
+        options_zh: [
+          "市长（maire）",
+          "省长（préfet）",
+          "大区议会主席",
+          "国民议会议员"
+        ],
+        answer: 1,
+        explanation: "Nommé par le Président de la République en Conseil des ministres, le préfet est le représentant de l'État dans le département. Il veille au maintien de l'ordre public, au respect des lois et délivre les titres de séjour.",
+        explanation_zh: "省长（préfet）由总统在部长会议上任命，是国家在各省的代表，负责维护公共秩序、执行法律并签发居留证件。"
+      },
+      {
+        id: 26,
+        theme: 'institutions',
+        isSituation: false,
+        q: "Comment est désigné le maire d'une commune en France ?",
+        q_zh: "法国市镇的市长（maire）是如何产生的？",
+        options: [
+          "Il est nommé par le préfet",
+          "Il est élu par le conseil municipal, lui-même élu au suffrage universel direct par les habitants de la commune",
+          "Il est tiré au sort parmi les habitants",
+          "Il est nommé par le Président de la République"
+        ],
+        options_zh: [
+          "由省长任命",
+          "由市议会选举产生，而市议会由市镇居民直接普选产生",
+          "从居民中抽签产生",
+          "由共和国总统任命"
+        ],
+        answer: 1,
+        explanation: "Les électeurs de la commune élisent les conseillers municipaux tous les 6 ans. Lors de sa première réunion, le conseil municipal élit le maire et ses adjoints.",
+        explanation_zh: "市镇选民每6年直接选举市议会议员，随后市议会在首次会议上选举产生市长和副市长。"
+      },
+      {
+        id: 27,
+        theme: 'institutions',
+        isSituation: false,
+        q: "Combien d'États membres composent aujourd'hui l'Union européenne ?",
+        q_zh: "目前欧盟（Union européenne）由多少个成员国组成？",
+        options: [
+          "15 États membres",
+          "27 États membres",
+          "32 États membres",
+          "19 États membres"
+        ],
+        options_zh: [
+          "15个成员国",
+          "27个成员国",
+          "32个成员国",
+          "19个成员国"
+        ],
+        answer: 1,
+        explanation: "Depuis le retrait du Royaume-Uni (Brexit) en 2020, l'Union européenne compte 27 États membres. La France en est l'un des 6 pays fondateurs (traité de Rome de 1957).",
+        explanation_zh: "自2020年英国脱欧（Brexit）以来，欧盟共有27个成员国。法国是1957年《罗马条约》的6个创始成员国之一。"
+      },
+      {
+        id: 28,
+        theme: 'institutions',
+        isSituation: false,
+        q: "Quelle est la monnaie officielle de la France et quel est l'hymne de l'Union européenne ?",
+        q_zh: "法国的官方货币是什么？欧盟的盟歌是什么？",
+        options: [
+          "Le franc français / La Marseillaise",
+          "L'euro (€) / L'Ode à la Joie (Beethoven)",
+          "L'euro (€) / Le Chant du Départ",
+          "L'écu / L'Hymne européen"
+        ],
+        options_zh: [
+          "法国法郎 / 《马赛曲》",
+          "欧元（€） / 《欢乐颂》（贝多芬）",
+          "欧元（€） / 《出发之歌》",
+          "埃居 / 《欧洲颂》"
+        ],
+        answer: 1,
+        explanation: "La France utilise l'euro depuis 1999 (pièces et billets depuis le 1er janvier 2002). L'hymne européen est l'Ode à la Joie, tirée de la 9e symphonie de Ludwig van Beethoven, et le drapeau européen comporte 12 étoiles d'or sur fond bleu.",
+        explanation_zh: "法国自1999年起采用欧元（2002年1月1日起流通纸币和硬币）。欧盟盟歌是贝多芬第九交响曲中的《欢乐颂》，盟旗为蓝底12颗金星。"
+      },
+      {
+        id: 29,
+        theme: 'institutions',
+        isSituation: false,
+        q: "Quels sont les trois niveaux de collectivités territoriales en France métropolitaine ?",
+        q_zh: "法国本土地方行政单位（collectivités territoriales）的三个层级是什么？",
+        options: [
+          "La commune, le département et la région",
+          "Le canton, l'arrondissement et la préfecture",
+          "La paroisse, le comté et le duché",
+          "L'État, le Sénat et l'Union européenne"
+        ],
+        options_zh: [
+          "市镇（commune）、省（département）和大区（région）",
+          "县、区和省政府",
+          "教区、郡和公国",
+          "国家、参议院和欧盟"
+        ],
+        answer: 0,
+        explanation: "La République est décentralisée et s'organise autour de trois niveaux principaux de collectivités territoriales administrées par des conseils élus : la commune, le département et la région.",
+        explanation_zh: "法国实行地方分权制，主要由三个层级的地方行政单位组成，均由选举产生的议会管理：市镇、省和大区。"
+      },
+      {
+        id: 30,
+        theme: 'institutions',
+        isSituation: true,
+        q: "[Mise en situation] Un citoyen européen (par exemple italien ou espagnol) résidant en France souhaite voter. À quelles élections peut-il participer en France ?",
+        q_zh: "【情景模拟】一位居住在法国的欧盟公民（例如意大利籍或西班牙籍）希望投票。他可以在法国参加哪些选举？",
+        options: [
+          "À toutes les élections, y compris l'élection présidentielle",
+          "Aux élections municipales et aux élections européennes (s'il est inscrit sur les listes électorales complémentaires)",
+          "À aucune élection tant qu'il n'est pas naturalisé",
+          "Uniquement aux élections législatives"
+        ],
+        options_zh: [
+          "所有选举，包括总统大选",
+          "市政选举和欧洲议会选举（前提是已在补充选民名册上登记）",
+          "在入籍法国前不能参加任何选举",
+          "仅限于立法选举"
+        ],
+        answer: 1,
+        explanation: "Les citoyens de l'Union européenne résidant en France peuvent voter et être élus aux élections municipales et aux élections européennes. L'élection présidentielle, les législatives et les sénatoriales sont réservées aux citoyens français.",
+        explanation_zh: "居住在法国的欧盟公民可以参加市政选举和欧洲议会选举的投票及被选举。总统选举、立法选举和参议院选举仅限法国公民参与。"
+      },
+      {
+        id: 31,
+        theme: 'institutions',
+        isSituation: false,
+        q: "Qu'est-ce que le suffrage universel ?",
+        q_zh: "什么是“普选权（suffrage universel）”？",
+        options: [
+          "Le droit de vote accordé uniquement aux personnes payant un certain montant d'impôts",
+          "Le droit de vote accordé à tous les citoyens majeurs (18 ans et plus), sans distinction de sexe, d'origine ou de fortune",
+          "Le vote obligatoire sous peine de prison",
+          "Le vote réservé aux chefs de famille"
+        ],
+        options_zh: [
+          "仅授予缴纳一定税款人士的投票权",
+          "授予所有成年公民（年满18周岁及以上）的投票权，不分性别、出身或财富",
+          "强制投票，否则将面临监禁",
+          "仅限于一家之主的投票权"
+        ],
+        answer: 1,
+        explanation: "En France, le suffrage est universel (tous les citoyens majeurs jouissant de leurs droits civiques peuvent voter), égal (une personne = une voix) et secret (passage obligatoire par l'isoloir).",
+        explanation_zh: "在法国，选举实行普选制（所有享有公民权的成年公民均可投票）、平等制（一人一票）和无记名秘密投票制（必须进入投票隔间）。"
+      },
+      {
+        id: 32,
+        theme: 'institutions',
+        isSituation: false,
+        q: "Où siège le Président de la République française ?",
+        q_zh: "法兰西共和国总统的官邸和办公地点在哪里？",
+        options: [
+          "À l'Hôtel de Matignon",
+          "Au Palais de l'Élysée (Paris)",
+          "Au Palais du Luxembourg",
+          "Au Château de Versailles"
+        ],
+        options_zh: [
+          "马提尼翁府（Hôtel de Matignon）",
+          "爱丽舍宫（Palais de l'Élysée，巴黎）",
+          "卢森堡宫",
+          "凡尔赛宫"
+        ],
+        answer: 1,
+        explanation: "Le Président de la République réside et travaille au Palais de l'Élysée à Paris. Le Premier ministre réside à l'Hôtel de Matignon.",
+        explanation_zh: "共和国总统在巴黎爱丽舍宫居住和办公，而总理府设在马提尼翁府（Hôtel de Matignon）。"
+      },
+      {
+        id: 33,
+        theme: 'institutions',
+        isSituation: true,
+        q: "[Mise en situation] Un habitant d'une commune souhaite faire refaire l'éclairage public de sa rue et inscrire son enfant à la cantine scolaire. À qui doit-il s'adresser ?",
+        q_zh: "【情景模拟】某市镇居民希望维修其所在街道的公共路灯，并为孩子报名学校食堂。他应该向哪个机构提出申请？",
+        options: [
+          "Au préfet du département",
+          "À la mairie (services municipaux)",
+          "Au Président de la République",
+          "Au tribunal judiciaire"
+        ],
+        options_zh: [
+          "向省长（省政府）",
+          "向市政厅（市镇行政服务部门）",
+          "向共和国总统",
+          "向司法法院"
+        ],
+        answer: 1,
+        explanation: "La commune (le maire et le conseil municipal) gère les services de proximité : voirie communale, éclairage public, écoles primaires et maternelles, cantines, état civil et urbanisme local.",
+        explanation_zh: "市镇（市长和市议会）负责管理基层公共服务：市镇道路、公共照明、幼儿园与小学、学校食堂、户籍民事登记以及地方城市规划。"
+      },
+
+      // --- THÈME 3 : DROITS ET DEVOIRS DU CITOYEN ---
+      {
+        id: 34,
+        theme: 'droits',
+        isSituation: false,
+        q: "Quel texte fondateur proclamé en août 1789 affirme que « Les hommes naissent et demeurent libres et égaux en droits » ?",
+        q_zh: "1789年8月颁布的哪一部奠基性文献宣称“在权利方面，人们生来是而且始终是自由平等的”？",
+        options: [
+          "Le Code civil de Napoléon",
+          "La Déclaration des droits de l'homme et du citoyen (DDHC)",
+          "L'Édit de Nantes",
+          "La Charte de l'environnement"
+        ],
+        options_zh: [
+          "《拿破仑民法典》",
+          "《人权和公民权宣言》（DDHC）",
+          "《南特敕令》",
+          "《环境宪章》"
+        ],
+        answer: 1,
+        explanation: "Adoptée le 26 août 1789 par l'Assemblée nationale constituante, la Déclaration des droits de l'homme et du citoyen fait partie intégrante du bloc de constitutionnalité français.",
+        explanation_zh: "1789年8月26日由国民制宪议会通过的《人权和公民权宣言》是法国宪法体系的核心组成部分。"
+      },
+      {
+        id: 35,
+        theme: 'droits',
+        isSituation: false,
+        q: "En quelle année la peine de mort a-t-elle été abolie en France ?",
+        q_zh: "法国是在哪一年废除死刑的？",
+        options: [
+          "1945",
+          "1981 (loi portée par Robert Badinter)",
+          "1968",
+          "2000"
+        ],
+        options_zh: [
+          "1945年",
+          "1981年（由罗伯特·巴丹戴尔推动立法）",
+          "1968年",
+          "2000年"
+        ],
+        answer: 1,
+        explanation: "La peine de mort a été abolie par la loi du 9 octobre 1981, portée par le garde des Sceaux Robert Badinter sous la présidence de François Mitterrand. Son interdiction est inscrite dans la Constitution depuis 2007.",
+        explanation_zh: "在弗朗索瓦·密特朗担任总统期间，由司法部长罗伯特·巴丹戴尔推动，法国于1981年10月9日立法废除死刑，并于2007年将禁止死刑写入宪法。"
+      },
+      {
+        id: 36,
+        theme: 'droits',
+        isSituation: false,
+        q: "Comment la loi pénale française classe-t-elle les infractions selon leur gravité ?",
+        q_zh: "法国刑法按严重程度将违法犯罪行为分为哪三类？",
+        options: [
+          "Les fautes légères, les fautes moyennes et les fautes graves",
+          "Les contraventions, les délits et les crimes",
+          "Les amendes, les sursis et les peines",
+          "Les infractions civiles et les infractions commerciales"
+        ],
+        options_zh: [
+          "轻度过错、中度过错和重度过错",
+          "违警罪（contraventions）、轻罪（délits）和重罪（crimes）",
+          "罚款、缓刑和实刑",
+          "民事违法和商业违法"
+        ],
+        answer: 1,
+        explanation: "Le Code pénal distingue trois catégories d'infractions par ordre croissant de gravité : les contraventions (jugées par le tribunal de police), les délits (tribunal correctionnel) et les crimes (cour d'assises ou cour criminelle).",
+        explanation_zh: "法国《刑法典》按严重程度由轻到重分为三类：违警罪（由违警法院审理）、轻罪（由轻罪法庭审理）和重罪（由重罪法庭审理）。"
+      },
+      {
+        id: 37,
+        theme: 'droits',
+        isSituation: false,
+        q: "Quel droit fondamental est inscrit dans la Constitution française depuis mars 2024 concernant les femmes ?",
+        q_zh: "自2024年3月起，哪一项涉及女性的基本权利被正式写入法国宪法？",
+        options: [
+          "La liberté garantie de recourir à l'interruption volontaire de grossesse (IVG)",
+          "Le droit au congé parental de 5 ans",
+          "La gratuité des transports publics",
+          "L'exonération d'impôt sur le revenu"
+        ],
+        options_zh: [
+          "受保障的自愿终止妊娠（堕胎/IVG）自由",
+          "5年育儿假的权利",
+          "免费乘坐公共交通",
+          "免征个人所得税"
+        ],
+        answer: 0,
+        explanation: "Légalisée en 1975 par la loi Veil, la liberté garantie à la femme de recourir à l'interruption volontaire de grossesse (IVG) a été inscrite à l'article 34 de la Constitution française le 8 mars 2024.",
+        explanation_zh: "继1975年《韦伊法案》合法化后，2024年3月8日法国正式将“保障女性自愿终止妊娠（IVG）的自由”写入宪法第34条。"
+      },
+      {
+        id: 38,
+        theme: 'droits',
+        isSituation: false,
+        q: "Qui doit payer les impôts en France ?",
+        q_zh: "在法国，谁必须缴纳税款？",
+        options: [
+          "Uniquement les personnes de nationalité française",
+          "Toute personne résidant ou percevant des revenus en France, selon ses capacités financières",
+          "Uniquement les propriétaires d'un logement",
+          "Personne, l'impôt est facultatif"
+        ],
+        options_zh: [
+          "仅限拥有法国国籍的人士",
+          "所有在法国居住或获得收入的人，根据其经济能力依法纳税",
+          "仅限拥有房产的人",
+          "没有人需要纳税，纳税是自愿的"
+        ],
+        answer: 1,
+        explanation: "Selon l'article 13 de la DDHC de 1789, la contribution commune est indispensable pour financer les services publics (écoles, hôpitaux, routes, sécurité) et doit être répartie entre tous en raison de leurs facultés.",
+        explanation_zh: "根据1789年《人权宣言》第13条，公共赋税是维持公共服务（学校、医院、道路、治安）所必需的，所有居民均须按其经济能力分担。"
+      },
+      {
+        id: 39,
+        theme: 'droits',
+        isSituation: false,
+        q: "Que signifie la présomption d'innocence ?",
+        q_zh: "什么是“无罪推定（présomption d'innocence）”原则？",
+        options: [
+          "Toute personne accusée d'une infraction est considérée comme innocente tant que sa culpabilité n'a pas été légalement établie par un tribunal",
+          "Une personne arrêtée par la police est automatiquement coupable",
+          "Seuls les avocats peuvent être déclarés innocents",
+          "Il n'y a pas de procès si la personne avoue"
+        ],
+        options_zh: [
+          "任何被指控违法的人，在法院依法判定其有罪之前，均被视为无罪",
+          "被警察逮捕的人自动被认定为有罪",
+          "只有律师才能被宣告无罪",
+          "如果当事人认罪，就不需要经过审判"
+        ],
+        answer: 0,
+        explanation: "Inscrite à l'article 9 de la DDHC de 1789, la présomption d'innocence protège tout individu contre les accusations arbitraires jusqu'à une décision définitive de justice.",
+        explanation_zh: "载于1789年《人权宣言》第9条的无罪推定原则保护任何人免受任意指控，直至法院作出最终有罪判决。"
+      },
+      {
+        id: 40,
+        theme: 'droits',
+        isSituation: false,
+        q: "Qu'est-ce que l'autorité parentale en France ?",
+        q_zh: "在法国，什么是“父母亲权（autorité parentale）”？",
+        options: [
+          "Un pouvoir appartenant exclusivement au père",
+          "Un ensemble de droits et de devoirs exercés conjointement par les deux parents dans l'intérêt de l'enfant (protection, santé, éducation)",
+          "Un droit qui s'arrête lorsque l'enfant entre au collège",
+          "Le droit d'utiliser les châtiments corporels sur son enfant"
+        ],
+        options_zh: [
+          "专属于父亲的权力",
+          "父母双方为了孩子的利益（保护、健康、教育）共同行使的一系列权利与义务",
+          "孩子升入初中后即终止的权利",
+          "对孩子实施体罚的权利"
+        ],
+        answer: 1,
+        explanation: "L'autorité parentale appartient conjointement aux père et mère (ou aux deux parents) jusqu'à la majorité ou l'émancipation de l'enfant. La loi interdit toute violence physique ou psychologique éducative.",
+        explanation_zh: "父母双方共同享有亲权，直至孩子成年。法律严禁任何形式的身体或精神教育暴力（打骂孩子）。"
+      },
+      {
+        id: 41,
+        theme: 'droits',
+        isSituation: false,
+        q: "Le mariage entre deux personnes de même sexe est-il autorisé en France ?",
+        q_zh: "在法国，同性婚姻是否合法？",
+        options: [
+          "Non, seul le PACS est autorisé",
+          "Oui, depuis la loi du 17 mai 2013 (« mariage pour tous »)",
+          "Uniquement dans les grandes villes",
+          "Oui, mais sans possibilité d'adopter"
+        ],
+        options_zh: [
+          "不合法，仅允许民事伴侣契约（PACS）",
+          "合法，自《2013年5月17日法律》（“全民婚姻法”）起正式允许",
+          "仅在大城市允许",
+          "合法，但不能收养子女"
+        ],
+        answer: 1,
+        explanation: "Depuis la loi du 17 mai 2013, le mariage civil en France est ouvert à tous les couples, de sexe différent ou de même sexe, avec les mêmes droits et devoirs.",
+        explanation_zh: "自《2013年5月17日法律》生效以来，法国民事婚姻向所有异性或同性伴侣开放，享有完全相同的权利与义务。"
+      },
+      {
+        id: 42,
+        theme: 'droits',
+        isSituation: false,
+        q: "Que dit la Charte de l'environnement de 2004, intégrée à la Constitution ?",
+        q_zh: "纳入法国宪法的《2004年环境宪章》有何规定？",
+        options: [
+          "Toute personne a le droit de vivre dans un environnement équilibré et le devoir de prendre part à sa préservation",
+          "Seules les entreprises industrielles doivent respecter l'environnement",
+          "Le tri des déchets est interdit aux particuliers",
+          "La protection de l'environnement ne concerne que les parcs nationaux"
+        ],
+        options_zh: [
+          "每个人都有权生活在平衡健康的环境中，并有义务参与环境保护",
+          "只有工业企业才必须遵守环保规定",
+          "禁止个人进行垃圾分类",
+          "环境保护仅涉及国家公园"
+        ],
+        answer: 0,
+        explanation: "Adossée à la Constitution en 2005, la Charte de l'environnement affirme que chacun a le droit de vivre dans un environnement sain et le devoir de contribuer à la préservation et à l'amélioration de l'environnement.",
+        explanation_zh: "2005年纳入宪法的《环境宪章》规定，人人享有生活在健康环境中的权利，也有义务为保护和改善环境作出贡献。"
+      },
+      {
+        id: 43,
+        theme: 'droits',
+        isSituation: false,
+        q: "Qu'est-ce que le délit de non-assistance à personne en danger ?",
+        q_zh: "什么是“见危不救罪（non-assistance à personne en danger）”？",
+        options: [
+          "Le fait de refuser de prêter de l'argent à un voisin",
+          "Le fait de s'abstenir volontairement de porter secours à une personne en péril (ou d'alerter les secours) alors qu'on pouvait le faire sans risque",
+          "Le fait de ne pas voter aux élections",
+          "Le fait de rouler sans ceinture de sécurité"
+        ],
+        options_zh: [
+          "拒绝借钱给邻居的行为",
+          "在自身无危险的情况下，故意不对处于危险中的人施以援手（或拨打求救电话）的行为",
+          "不参加选举投票的行为",
+          "开车不系安全带的行为"
+        ],
+        answer: 1,
+        explanation: "En France, porter secours à une personne en danger (au minimum en appelant immédiatement le 15, le 17, le 18 ou le 112) est un devoir légal puni par l'article 223-6 du Code pénal.",
+        explanation_zh: "在法国，救助处于危险中的人（至少立即拨打15、17、18或112报警急救）是一项法定义务，违反者将依据《刑法典》第223-6条受到惩处。"
+      },
+      {
+        id: 44,
+        theme: 'droits',
+        isSituation: true,
+        q: "[Mise en situation] Vous êtes témoin dans la rue ou chez un voisin de violences conjugales ou de maltraitance sur un enfant. Que devez-vous faire ?",
+        q_zh: "【情景模拟】您在街头或邻居家目击了家庭暴力或虐待儿童的行为。您应该怎么做？",
+        options: [
+          "Ne rien faire car cela relève de la vie privée de la famille",
+          "Alerter immédiatement les secours (17 pour la police, 119 pour l'enfance en danger, 3919 pour les violences faites aux femmes)",
+          "Attendre plusieurs semaines pour voir si la situation s'améliore",
+          "Publier une vidéo sur les réseaux sociaux sans prévenir la police"
+        ],
+        options_zh: [
+          "什么都不做，因为这属于家庭隐私",
+          "立即报警求助（拨打17报警，119儿童保护热线，或3919反家暴热线）",
+          "等几周看看情况是否好转",
+          "不报警而直接把视频发到社交媒体上"
+        ],
+        answer: 1,
+        explanation: "Les violences intrafamiliales ne relèvent pas de la sphère privée : ce sont des délits ou des crimes. Tout témoin a le devoir civique et légal d'alerter les autorités (17 ou 119).",
+        explanation_zh: "家庭暴力不属于私人生活范畴，而是严重的刑事犯罪。任何目击者都有公民和法律义务立即向当局报警（17或119）。"
+      },
+      {
+        id: 45,
+        theme: 'droits',
+        isSituation: true,
+        q: "[Mise en situation] Lors d'un contrôle d'identité par la police ou la gendarmerie dans la rue, quelle attitude devez-vous adopter ?",
+        q_zh: "【情景模拟】在街头遇到警察或宪兵进行身份检查时，您应当采取什么态度？",
+        options: [
+          "Refuser de présenter vos papiers car vous n'avez rien fait de mal",
+          "Rester calme, poli et présenter un document justifiant votre identité et votre droit au séjour",
+          "Partir en courant",
+          "Exiger d'être conduit immédiatement devant le maire"
+        ],
+        options_zh: [
+          "因为自己没做错事而拒绝出示证件",
+          "保持冷静和礼貌，出示能够证明身份和合法居留权的证件",
+          "转身跑开",
+          "要求立即见市长"
+        ],
+        answer: 1,
+        explanation: "Les forces de l'ordre sont habilitées à effectuer des contrôles d'identité dans les conditions prévues par la loi. Tout étranger en France doit être en mesure de présenter les documents sous couvert desquels il est autorisé à séjourner.",
+        explanation_zh: "执法人员依法有权进行身份核查。所有在法外国人必须随身携带并能够出示证明其合法居留身份的证件。"
+      },
+      {
+        id: 46,
+        theme: 'droits',
+        isSituation: true,
+        q: "[Mise en situation] Vous avez changé d'adresse alors que vous êtes titulaire d'un titre de séjour. Que devez-vous faire ?",
+        q_zh: "【情景模拟】您持有居留证期间更换了居住地址。您必须怎么做？",
+        options: [
+          "Rien, la préfecture est informée automatiquement",
+          "Déclarer votre changement d'adresse en ligne (ANEF) ou auprès de la préfecture dans un délai de 3 mois",
+          "Attendre l'expiration de votre titre de séjour dans plusieurs années",
+          "Prévenir uniquement votre banque"
+        ],
+        options_zh: [
+          "什么都不用做，省政府会自动收到通知",
+          "在3个月内通过线上平台（ANEF）或向省政府申报地址变更",
+          "等到几年后居留证过期再说",
+          "仅通知您的银行即可"
+        ],
+        answer: 1,
+        explanation: "Tout titulaire d'un titre de séjour a l'obligation légale de signaler tout changement de domicile dans les 3 mois auprès de l'administration (téléservice ANEF).",
+        explanation_zh: "任何居留证持有人都有法定义务在搬家后3个月内向行政部门（ANEF线上服务平台）申报地址变更。"
+      },
+      {
+        id: 47,
+        theme: 'droits',
+        isSituation: true,
+        q: "[Mise en situation] Un voisin fait régulièrement du bruit très fort à 2 heures du matin (tapage nocturne). Quelle démarche civique privilégier ?",
+        q_zh: "【情景模拟】邻居经常在凌晨2点制造巨大噪音（夜间噪音扰民）。应优先采取哪种公民处理方式？",
+        options: [
+          "Aller frapper violemment à sa porte avec un objet",
+          "Tenter d'abord un dialogue courtois ; si le bruit persiste, contacter la police ou la gendarmerie (17) ou le syndic/propriétaire",
+          "Couper son compteur électrique dans le couloir",
+          "Mettre sa propre musique encore plus fort"
+        ],
+        options_zh: [
+          "拿物品猛烈敲打邻居房门",
+          "先尝试礼貌沟通；如果噪音持续，联系警察或宪兵（17）或物业/房东",
+          "在走廊里切断邻居的电闸",
+          "把自己的音乐开得更大声"
+        ],
+        answer: 1,
+        explanation: "En France, nul ne doit se faire justice soi-même. Le tapage nocturne (entre 22h et 7h) est une contravention punie d'une amende forfaitaire que les forces de l'ordre peuvent constater.",
+        explanation_zh: "在法国，任何人不得私力报复。夜间噪音扰民（22点至次日7点）属于违警行为，警方到场核实后可处以定额罚款。"
+      },
+      {
+        id: 48,
+        theme: 'droits',
+        isSituation: false,
+        q: "Quelle est la majorité civile et pénale en France ?",
+        q_zh: "法国的民事和刑事成年年龄是多少岁？",
+        options: [
+          "16 ans",
+          "18 ans",
+          "21 ans",
+          "15 ans"
+        ],
+        options_zh: [
+          "16岁",
+          "18岁",
+          "21岁",
+          "15岁"
+        ],
+        answer: 1,
+        explanation: "Fixée à 18 ans depuis 1974, la majorité confère la pleine capacité juridique (voter, passer le permis de conduire, signer un contrat, se marier sans autorisation parentale).",
+        explanation_zh: "自1974年起，法国法定成年年龄为18周岁，年满18岁即具备完全法律行为能力（投票、考驾照、签署合同、无需父母同意即可结婚）。"
+      },
+      {
+        id: 49,
+        theme: 'droits',
+        isSituation: false,
+        q: "Qu'est-ce que le droit syndical et le droit de grève en France ?",
+        q_zh: "在法国，什么是工会权利和罢工权？",
+        options: [
+          "Des droits garantis par la Constitution permettant aux salariés de défendre collectivement leurs intérêts professionnels",
+          "Des pratiques interdites dans le secteur privé",
+          "Le droit de refuser de travailler sans préavis ni motif professionnel",
+          "Des droits réservés aux chefs d'entreprise"
+        ],
+        options_zh: [
+          "受宪法保障的权利，允许雇员集体维护其职业利益",
+          "在私营部门被禁止的行为",
+          "无需提前通知或职业理由即可拒绝工作的权利",
+          "专属于企业主的权利"
+        ],
+        answer: 0,
+        explanation: "Le préambule de la Constitution de 1946 reconnaît à tout travailleur le droit d'adhérer au syndicat de son choix et le droit de grève dans le cadre des lois qui le réglementent.",
+        explanation_zh: "1946年宪法序言承认所有劳动者有权加入自己选择的工会，并在法律规范框架内享有罢工权。"
+      },
+      {
+        id: 50,
+        theme: 'droits',
+        isSituation: false,
+        q: "En France, qu'est-ce que la Cour européenne des droits de l'homme (CEDH) située à Strasbourg ?",
+        q_zh: "位于法国斯特拉斯堡的欧洲人权法院（CEDH）是什么机构？",
+        options: [
+          "Le parlement qui vote le budget de la France",
+          "Une juridiction internationale devant laquelle tout citoyen peut déposer un recours si l'État a violé ses droits fondamentaux après épuisement des recours nationaux",
+          "Une banque européenne",
+          "Un tribunal qui juge uniquement les infractions routières"
+        ],
+        options_zh: [
+          "表决法国预算的议会",
+          "一个国际司法机构，任何公民在用尽国内救济途径后，如认为国家侵犯其基本人权，均可向该法院提起申诉",
+          "一家欧洲银行",
+          "专门审理交通违章的法院"
+        ],
+        answer: 1,
+        explanation: "La CEDH veille au respect de la Convention européenne des droits de l'homme par les 46 États membres du Conseil de l'Europe.",
+        explanation_zh: "欧洲人权法院负责监督欧洲委员会46个成员国遵守《欧洲人权公约》。"
+      },
+      {
+        id: 51,
+        theme: 'droits',
+        isSituation: true,
+        q: "[Mise en situation] Vous trouvez un portefeuille contenant de l'argent et une carte d'identité dans le métro ou dans la rue. Que devez-vous faire ?",
+        q_zh: "【情景模拟】您在地铁或街上捡到一个装有现金和身份证的钱包。您应该怎么做？",
+        options: [
+          "Garder l'argent et jeter les papiers",
+          "Le remettre aux objets trouvés, à un agent de transport ou au commissariat de police",
+          "Le laisser par terre",
+          "Utiliser la carte bancaire pour faire un petit achat"
+        ],
+        options_zh: [
+          "留下现金并扔掉证件",
+          "将其交给失物招领处、交通工作人员或警察局",
+          "将其留在地上不管",
+          "用里面的银行卡进行小额消费"
+        ],
+        answer: 1,
+        explanation: "Garder un bien perdu appartenant à autrui constitue un vol ou une appropriation frauduleuse punie par la loi. Le civisme impose de le remettre aux autorités compétentes.",
+        explanation_zh: "将他人遗失的财物占为己有在法律上构成盗窃或非法侵占罪。公民公德要求将其交还给相关部门。"
+      },
+
+      // --- THÈME 4 : HISTOIRE, GÉOGRAPHIE ET CULTURE DE LA FRANCE ---
+      {
+        id: 52,
+        theme: 'histoire',
+        isSituation: false,
+        q: "Quel événement majeur a marqué le début de la Révolution française en 1789 ?",
+        q_zh: "1789年标志着法国大革命开始的重大历史事件是什么？",
+        options: [
+          "Le sacre de Napoléon Bonaparte",
+          "La convocation des États généraux, la prise de la Bastille (14 juillet) et l'abolition des privilèges",
+          "La signature du traité de Versailles",
+          "La construction de la tour Eiffel"
+        ],
+        options_zh: [
+          "拿破仑·波拿巴加冕称帝",
+          "三级会议的召开、攻占巴士底狱（7月14日）以及废除封建特权",
+          "《凡尔赛条约》的签署",
+          "埃菲尔铁塔的建造"
+        ],
+        answer: 1,
+        explanation: "L'année 1789 marque la fin de l'Ancien Régime et de la monarchie absolue, l'abolition des privilèges féodaux (4 août) et la proclamation des droits de l'homme et du citoyen (26 août).",
+        explanation_zh: "1789年标志着旧制度和绝对君主制的终结、封建特权的废除（8月4日）以及《人权和公民权宣言》的颁布（8月26日）。"
+      },
+      {
+        id: 53,
+        theme: 'histoire',
+        isSituation: false,
+        q: "Quel roi de France, surnommé le « Roi-Soleil », a fait construire le château de Versailles ?",
+        q_zh: "被称为“太阳王”并下令建造凡尔赛宫的法国国王是谁？",
+        options: [
+          "François Ier",
+          "Louis XIV",
+          "Louis XVI",
+          "Charlemagne"
+        ],
+        options_zh: [
+          "弗朗索瓦一世",
+          "路易十四",
+          "路易十六",
+          "查理曼大帝"
+        ],
+        answer: 1,
+        explanation: "Louis XIV (règne de 1643 à 1715) incarne la monarchie absolue en France et a transformé le pavillon de chasse de Versailles en un palais monumental symbolisant son pouvoir.",
+        explanation_zh: "路易十四（1643年至1715年在位）是法国绝对君主制的代表，他将凡尔赛狩猎行宫改建为象征王权的宏伟宫殿。"
+      },
+      {
+        id: 54,
+        theme: 'histoire',
+        isSituation: false,
+        q: "En quelle année l'esclavage a-t-il été définitivement aboli en France et sous l'impulsion de quelle personnalité ?",
+        q_zh: "法国在哪一年最终废除奴隶制？是由哪位历史人物推动的？",
+        options: [
+          "1789, par Robespierre",
+          "1848, sous l'impulsion de Victor Schœlcher",
+          "1905, par Jean Jaurès",
+          "1815, par Napoléon"
+        ],
+        options_zh: [
+          "1789年，由罗伯斯庇尔推动",
+          "1848年，由维克多·舍尔歇（Victor Schœlcher）推动",
+          "1905年，由让·饶勒斯推动",
+          "1815年，由拿破仑推动"
+        ],
+        answer: 1,
+        explanation: "Après une première abolition en 1794 rétablie par Napoléon en 1802, le décret du 27 avril 1848, préparé par Victor Schœlcher sous la IIe République, abolit définitivement l'esclavage dans toutes les colonies françaises.",
+        explanation_zh: "在1794年首次废除后又于1802年恢复，最终在第二共和国时期，由维克多·舍尔歇起草的1848年4月27日法令在所有法国殖民地永久废除了奴隶制。"
+      },
+      {
+        id: 55,
+        theme: 'histoire',
+        isSituation: false,
+        q: "Quel ministre de l'Instruction publique a rendu l'école primaire gratuite, laïque et obligatoire dans les années 1880 ?",
+        q_zh: "19世纪80年代，哪位公共教育部长使小学教育成为免费、世俗和义务教育？",
+        options: [
+          "Jules Ferry",
+          "Georges Clemenceau",
+          "Léon Blum",
+          "Jean Moulin"
+        ],
+        options_zh: [
+          "茹尔·费里（Jules Ferry）",
+          "乔治·克列孟梭",
+          "莱昂·布鲁姆",
+          "让·穆兰"
+        ],
+        answer: 0,
+        explanation: "Les lois Jules Ferry de 1881 et 1882 ont instauré l'école primaire publique gratuite, laïque et l'instruction obligatoire pour tous les enfants (filles et garçons).",
+        explanation_zh: "1881年和1882年的《茹尔·费里法案》确立了公立小学免费、世俗化以及所有男女儿童接受义务教育的制度。"
+      },
+      {
+        id: 56,
+        theme: 'histoire',
+        isSituation: false,
+        q: "Quelles sont les dates exactes de la Première Guerre mondiale et quel jour commémore-t-on l'armistice ?",
+        q_zh: "第一次世界大战的起止年份是什么？哪一天纪念停战日？",
+        options: [
+          "1939-1945, commémoré le 8 mai",
+          "1914-1918, commémoré le 11 novembre",
+          "1870-1871, commémoré le 14 juillet",
+          "1914-1918, commémoré le 18 juin"
+        ],
+        options_zh: [
+          "1939-1945年，5月8日纪念",
+          "1914-1918年，11月11日纪念",
+          "1870-1871年，7月14日纪念",
+          "1914-1918年，6月18日纪念"
+        ],
+        answer: 1,
+        explanation: "La Première Guerre mondiale (1914-1918) s'est achevée par la signature de l'armistice le 11 novembre 1918. Ce jour est férié en France en hommage à tous les morts pour la France.",
+        explanation_zh: "第一次世界大战（1914-1918年）以1918年11月11日签署停战协定而结束。这一天是法国法定假日，以纪念所有为国捐躯的烈士。"
+      },
+      {
+        id: 57,
+        theme: 'histoire',
+        isSituation: false,
+        q: "Qui a lancé l'Appel du 18 juin 1940 depuis Londres pour appeler les Français à résister contre l'occupation allemande ?",
+        q_zh: "1940年6月18日，谁在伦敦发表《六一八宣言》，号召法国人民抵抗德国占领？",
+        options: [
+          "Le maréchal Pétain",
+          "Le général Charles de Gaulle",
+          "Jean Moulin",
+          "Simone Veil"
+        ],
+        options_zh: [
+          "贝当元帅",
+          "夏尔·戴高乐将军",
+          "让·穆兰",
+          "西蒙娜·韦伊"
+        ],
+        answer: 1,
+        explanation: "Le 18 juin 1940, au micro de la BBC à Londres, le général de Gaulle refuse l'armistice demandé par le maréchal Pétain et appelle les Français à poursuivre le combat : c'est l'acte fondateur de la France libre.",
+        explanation_zh: "1940年6月18日，戴高乐将军在伦敦BBC电台拒绝贝当元帅请求的停战协定，号召法国人继续战斗，这是“自由法国”运动的奠基之举。"
+      },
+      {
+        id: 58,
+        theme: 'histoire',
+        isSituation: false,
+        q: "En quelle année les femmes ont-elles obtenu le droit de vote et d'éligibilité en France ?",
+        q_zh: "法国女性在哪一年获得了选举权和被选举权？",
+        options: [
+          "1789",
+          "1944 (par ordonnance du général de Gaulle, premier vote en 1945)",
+          "1968",
+          "1918"
+        ],
+        options_zh: [
+          "1789年",
+          "1944年（由戴高乐将军颁布法令，1945年首次投票）",
+          "1968年",
+          "1918年"
+        ],
+        answer: 1,
+        explanation: "L'ordonnance du 21 avril 1944 signée à Alger par le général de Gaulle accorde le droit de vote et d'éligibilité aux femmes françaises. Elles votent pour la première fois aux élections municipales d'avril 1945.",
+        explanation_zh: "1944年4月21日，戴高乐将军在阿尔及尔签署法令，赋予法国女性选举权和被选举权。女性于1945年4月市政选举中首次参加投票。"
+      },
+      {
+        id: 59,
+        theme: 'histoire',
+        isSituation: false,
+        q: "Qu'appelle-t-on la Shoah pendant la Seconde Guerre mondiale ?",
+        q_zh: "第二次世界大战期间的“大屠杀（Shoah）”指的是什么？",
+        options: [
+          "Le débarquement allié en Normandie",
+          "Le génocide perpétré par l'Allemagne nazie et ses collaborateurs, au cours duquel six millions de Juifs d'Europe (dont environ 76 000 déportés de France) ont été exterminés",
+          "La reconstruction économique de l'Europe après 1945",
+          "La création de l'Organisation des Nations unies"
+        ],
+        options_zh: [
+          "盟军诺曼底登陆",
+          "纳粹德国及其合作者实施的种族灭绝，欧洲六百万犹太人（包括从法国驱逐的约76,000人）遭到屠杀",
+          "1945年后欧洲的经济重建",
+          "联合国的成立"
+        ],
+        answer: 1,
+        explanation: "La Shoah désigne l'extermination systématique des Juifs d'Europe par le régime nazi entre 1941 et 1945. En 1995, le président Jacques Chirac a officiellement reconnu la responsabilité de l'État français (régime de Vichy) dans la déportation des Juifs de France.",
+        explanation_zh: "Shoah指1941年至1945年间纳粹政权对欧洲犹太人的系统性灭绝。1995年，希拉克总统正式承认法国维希政府在驱逐法国犹太人事件中的历史责任。"
+      },
+      {
+        id: 60,
+        theme: 'histoire',
+        isSituation: false,
+        q: "Quels sont les cinq grands fleuves qui traversent la France métropolitaine ?",
+        q_zh: "流经法国本土的五大河流是哪五条？",
+        options: [
+          "La Seine, la Loire, le Rhône, la Garonne et le Rhin",
+          "La Tamise, le Danube, le Pô, l'Èbre et le Rhin",
+          "La Seine, la Saône, l'Isère, le Tarn et la Marne",
+          "Le Nil, la Loire, le Rhône, la Meuse et la Somme"
+        ],
+        options_zh: [
+          "塞纳河、卢瓦尔河、罗讷河、加龙河和莱茵河",
+          "泰晤士河、多瑙河、波河、埃布罗河和莱茵河",
+          "塞纳河、索恩河、伊泽尔河、塔恩河和马恩河",
+          "尼罗河、卢瓦尔河、罗讷河、默兹河和索姆河"
+        ],
+        answer: 0,
+        explanation: "Les cinq principaux fleuves français sont la Loire (le plus long entièrement en France, 1 006 km), la Seine (qui traverse Paris), le Rhône, la Garonne et le Rhin (frontière avec l'Allemagne).",
+        explanation_zh: "法国五大主要河流为：卢瓦尔河（全境最长，1006公里）、塞纳河（流经巴黎）、罗讷河、加龙河以及莱茵河（法德界河）。"
+      },
+      {
+        id: 61,
+        theme: 'histoire',
+        isSituation: false,
+        q: "Quel est le point culminant de la France et de l'Europe occidentale ?",
+        q_zh: "法国及西欧的最高峰是哪座山峰？",
+        options: [
+          "Le Puy de Dôme",
+          "Le Mont-Blanc (4 806 mètres dans les Alpes)",
+          "Le Pic du Midi dans les Pyrénées",
+          "Le Ballon d'Alsace dans les Vosges"
+        ],
+        options_zh: [
+          "多姆山（Puy de Dôme）",
+          "勃朗峰（Mont-Blanc，位于阿尔卑斯山脉，海拔4,806米）",
+          "比利牛斯山南峰",
+          "孚日山脉阿尔萨斯气球峰"
+        ],
+        answer: 1,
+        explanation: "Situé dans le massif des Alpes en Haute-Savoie, le Mont-Blanc culmine à environ 4 806 mètres d'altitude.",
+        explanation_zh: "勃朗峰位于上萨瓦省的阿尔卑斯山脉，海拔约4,806米，是法国和西欧的最高峰。"
+      },
+      {
+        id: 62,
+        theme: 'histoire',
+        isSituation: false,
+        q: "Quelle est la population approximative de la France en 2026 ?",
+        q_zh: "2026年法国的总人口大约是多少？",
+        options: [
+          "Environ 45 millions d'habitants",
+          "Environ 68,5 millions d'habitants (métropole et outre-mer)",
+          "Environ 95 millions d'habitants",
+          "Environ 52 millions d'habitants"
+        ],
+        options_zh: [
+          "约4500万居民",
+          "约6850万居民（含本土与海外省）",
+          "约9500万居民",
+          "约5200万居民"
+        ],
+        answer: 1,
+        explanation: "Selon l'INSEE, la France compte environ 68,5 millions d'habitants répartis entre la France métropolitaine et les départements et régions d'outre-mer.",
+        explanation_zh: "根据法国国家统计与经济研究所（INSEE）数据，法国本土及海外省总人口约为6850万。"
+      },
+      {
+        id: 63,
+        theme: 'histoire',
+        isSituation: false,
+        q: "Parmi ces territoires, lesquels sont des départements et régions d'outre-mer (DROM) français ?",
+        q_zh: "以下哪些地区属于法国的海外省和海外大区（DROM）？",
+        options: [
+          "La Guadeloupe, la Martinique, la Guyane, La Réunion et Mayotte",
+          "La Corse, la Bretagne et l'Alsace",
+          "Le Québec, la Belgique et la Suisse",
+          "Madagascar, l'Algérie et le Sénégal"
+        ],
+        options_zh: [
+          "瓜德罗普、马提尼克、法属圭亚那、留尼汪和马约特",
+          "科西嘉、布列塔尼和阿尔萨斯",
+          "魁北克、比利时和瑞士",
+          "马达加斯加、阿尔及利亚和塞内加尔"
+        ],
+        answer: 0,
+        explanation: "La France comprend 5 départements et régions d'outre-mer (Guadeloupe, Martinique, Guyane, La Réunion, Mayotte) ainsi que des collectivités d'outre-mer (Polynésie française, Nouvelle-Calédonie, Saint-Pierre-et-Miquelon, etc.).",
+        explanation_zh: "法国拥有5个海外省和海外大区（瓜德罗普、马提尼克、法属圭亚那、留尼汪、马约特）以及其他海外集体（法属波利尼西亚、新喀里多尼亚等）。"
+      },
+      {
+        id: 64,
+        theme: 'histoire',
+        isSituation: false,
+        q: "Qui était Simone Veil, inhumée au Panthéon en 2018 ?",
+        q_zh: "2018年安葬于巴黎先贤祠的西蒙娜·韦伊（Simone Veil）是谁？",
+        options: [
+          "Une romancière du XIXe siècle",
+          "Une survivante de la Shoah, ministre de la Santé ayant porté la loi de 1975 sur l'IVG et première présidente du Parlement européen élu au suffrage universel",
+          "Une scientifique ayant découvert le radium",
+          "Une héroïne de la guerre de Cent Ans"
+        ],
+        options_zh: [
+          "19世纪的一位女小说家",
+          "纳粹大屠杀幸存者、推动1975年堕胎合法化法案的卫生部长、首任普选欧洲议会议长",
+          "发现镭元素的女科学家",
+          "百年战争中的女英雄"
+        ],
+        answer: 1,
+        explanation: "Figure majeure de la vie politique française et européenne, Simone Veil a consacré sa vie à la défense des droits des femmes, de la dignité humaine et de la construction européenne.",
+        explanation_zh: "西蒙娜·韦伊是法国和欧洲政坛的重要人物，毕生致力于捍卫女性权利、人类尊严以及欧洲一体化建设。"
+      },
+      {
+        id: 65,
+        theme: 'histoire',
+        isSituation: false,
+        q: "Qui était Auguste Rodin ?",
+        q_zh: "奥古斯特·罗丹（Auguste Rodin）是谁？",
+        options: [
+          "Un célèbre sculpteur français (auteur du Penseur)",
+          "Un roi de France",
+          "Un compositeur d'opéra",
+          "Un inventeur de l'aviation"
+        ],
+        options_zh: [
+          "法国著名雕塑家（《思想者》的作者）",
+          "一位法国国王",
+          "一位歌剧作曲家",
+          "一位航空发明家"
+        ],
+        answer: 0,
+        explanation: "Auguste Rodin (1840-1917) est l'un des pères de la sculpture moderne, célèbre notamment pour « Le Penseur », « Le Baiser » et « Les Bourgeois de Calais ».",
+        explanation_zh: "奥古斯特·罗丹（1840-1917）是现代雕塑艺术的奠基人之一，代表作有《思想者》、《吻》和《加莱义民》。"
+      },
+      {
+        id: 66,
+        theme: 'histoire',
+        isSituation: false,
+        q: "Pour quelle occasion la tour Eiffel a-t-elle été construite à Paris ?",
+        q_zh: "巴黎埃菲尔铁塔是为纪念什么盛事而建造的？",
+        options: [
+          "Pour le sacre de Napoléon Ier en 1804",
+          "Pour l'Exposition universelle de 1889 célébrant le centenaire de la Révolution française",
+          "Pour les Jeux olympiques de 2024",
+          "Pour la fin de la Seconde Guerre mondiale"
+        ],
+        options_zh: [
+          "纪念1804年拿破仑一世加冕",
+          "为1889年巴黎世界博览会暨纪念法国大革命一百周年而建",
+          "为2024年巴黎奥运会而建",
+          "纪念第二次世界大战结束"
+        ],
+        answer: 1,
+        explanation: "Construite par Gustave Eiffel et ses ingénieurs en deux ans, la tour Eiffel a été inaugurée pour l'Exposition universelle de 1889 marquant les 100 ans de la Révolution française.",
+        explanation_zh: "由古斯塔夫·埃菲尔及其工程师团队耗时两年建造，埃菲尔铁塔于1889年世界博览会期间落成，以庆祝法国大革命100周年。"
+      },
+      {
+        id: 67,
+        theme: 'histoire',
+        isSituation: false,
+        q: "Qu'est-ce que le siècle des Lumières (XVIIIe siècle) en France ?",
+        q_zh: "法国18世纪的“启蒙时代（Siècle des Lumières）”是什么？",
+        options: [
+          "L'époque de l'invention de l'ampoule électrique",
+          "Un mouvement intellectuel et philosophique (Voltaire, Rousseau, Montesquieu, Diderot) défendant la raison, la science, la tolérance et la liberté contre l'absolutisme",
+          "Une guerre de religion au XVIe siècle",
+          "La période de construction des cathédrales gothiques"
+        ],
+        options_zh: [
+          "发明电灯泡的时代",
+          "一场思想与哲学运动（伏尔泰、卢梭、孟德斯鸠、狄德罗等），倡导理性、科学、宽容与自由，反对专制主义",
+          "16世纪的一场宗教战争",
+          "建造哥特式大教堂的时期"
+        ],
+        answer: 1,
+        explanation: "Les philosophes des Lumières ont profondément inspiré la Révolution française et la Déclaration des droits de l'homme et du citoyen de 1789.",
+        explanation_zh: "启蒙运动思想家深刻影响了法国大革命以及1789年《人权和公民权宣言》的诞生。"
+      },
+      {
+        id: 68,
+        theme: 'histoire',
+        isSituation: false,
+        q: "Quel monument parisien porte l'inscription « Aux grands hommes la patrie reconnaissante » ?",
+        q_zh: "巴黎哪座历史建筑的门楣上刻有“伟人们，祖国感谢你们”的铭文？",
+        options: [
+          "L'Arc de Triomphe",
+          "Le Panthéon",
+          "Le Musée du Louvre",
+          "La Cathédrale Notre-Dame"
+        ],
+        options_zh: [
+          "凯旋门",
+          "先贤祠（Le Panthéon）",
+          "卢浮宫",
+          "巴黎圣母院"
+        ],
+        answer: 1,
+        explanation: "Situé dans le Quartier latin à Paris, le Panthéon abrite les sépultures de grandes personnalités qui ont marqué l'histoire de France (Voltaire, Victor Hugo, Marie Curie, Jean Moulin, Simone Veil, Joséphine Baker, Missak Manouchian...).",
+        explanation_zh: "位于巴黎拉丁区的先贤祠安葬着对法国历史作出杰出贡献的伟人（伏尔泰、雨果、居里夫人、让·穆兰、西蒙娜·韦伊、约瑟芬·贝克、米萨克·马努尚等）。"
+      },
+
+      // --- THÈME 5 : VIVRE DANS LA SOCIÉTÉ FRANÇAISE ---
+      {
+        id: 69,
+        theme: 'societe',
+        isSituation: false,
+        q: "En France, quelle cérémonie de mariage a une valeur légale ?",
+        q_zh: "在法国，哪一种婚礼仪式具有法律效力？",
+        options: [
+          "Le mariage religieux uniquement",
+          "Le mariage civil célébré à la mairie par un officier d'état civil (qui doit obligatoirement précéder tout mariage religieux)",
+          "Une simple déclaration sur l'honneur entre familles",
+          "Le mariage célébré devant un notaire"
+        ],
+        options_zh: [
+          "仅宗教婚礼",
+          "由户籍官员在市政厅主持的民事婚姻（且必须在任何宗教婚礼之前举行）",
+          "双方家庭之间的荣誉声明",
+          "在公证人面前举行的婚礼"
+        ],
+        answer: 1,
+        explanation: "En France, seul le mariage civil célébré en mairie produit des effets juridiques. Un ministre du culte n'a pas le droit de célébrer un mariage religieux avant la célébration du mariage civil.",
+        explanation_zh: "在法国，只有市政厅举行的民事登记婚礼才具有法律效力。神职人员无权在民事婚礼举行之前主持宗教婚礼。"
+      },
+      {
+        id: 70,
+        theme: 'societe',
+        isSituation: false,
+        q: "Dans quel délai la naissance d'un enfant en France doit-elle être déclarée à l'officier d'état civil de la mairie ?",
+        q_zh: "在法国，婴儿出生后必须在多少天内向出生地市政厅户籍处申报出生登记？",
+        options: [
+          "Dans les 5 jours qui suivent le jour de l'accouchement",
+          "Dans les 6 mois suivant la naissance",
+          "Uniquement lors de l'entrée à l'école",
+          "Dans les 24 heures maximum"
+        ],
+        options_zh: [
+          "分娩日之后的5天内",
+          "出生后的6个月内",
+          "仅在孩子入学时申报",
+          "最多24小时内"
+        ],
+        answer: 0,
+        explanation: "La déclaration de naissance est obligatoire et doit être faite à la mairie du lieu de naissance dans les 5 jours suivant l'accouchement afin d'établir l'acte de naissance.",
+        explanation_zh: "出生申报是强制性的，必须在婴儿出生后的5天内向出生地市政厅申报，以便开具出生证明。"
+      },
+      {
+        id: 71,
+        theme: 'societe',
+        isSituation: false,
+        q: "À partir de quel âge l'instruction est-elle obligatoire en France ?",
+        q_zh: "在法国，儿童从几岁开始必须接受义务教育？",
+        options: [
+          "À partir de 6 ans",
+          "De 3 ans à 16 ans (avec obligation de formation jusqu'à 18 ans)",
+          "À partir de 5 ans",
+          "L'école n'est pas obligatoire en France"
+        ],
+        options_zh: [
+          "从6岁起",
+          "从3岁至16周岁（且18岁前须接受教育或职业培训）",
+          "从5岁起",
+          "法国没有义务教育"
+        ],
+        answer: 1,
+        explanation: "Depuis la rentrée 2019, l'instruction est obligatoire pour tous les enfants (français et étrangers résidant en France) dès l'âge de 3 ans et jusqu'à 16 ans révolus.",
+        explanation_zh: "自2019年秋季开学起，所有居住在法国的儿童（无论法国籍还是外国籍）从3周岁起至满16周岁止均必须接受义务教育。"
+      },
+      {
+        id: 72,
+        theme: 'societe',
+        isSituation: false,
+        q: "Quel numéro d'urgence permet d'appeler le SAMU (urgences médicales) et quel est le numéro d'urgence européen ?",
+        q_zh: "在法国呼叫医疗急救中心（SAMU）的电话号码是多少？欧洲通用紧急求救号码是多少？",
+        options: [
+          "Le 15 pour le SAMU et le 112 pour les urgences européennes",
+          "Le 17 pour le SAMU et le 911 pour l'Europe",
+          "Le 18 pour le SAMU et le 3631 pour l'Europe",
+          "Le 119 pour le SAMU et le 114 pour l'Europe"
+        ],
+        options_zh: [
+          "医疗急救中心（SAMU）为15，欧洲紧急求救号码为112",
+          "SAMU为17，欧洲紧急号码为911",
+          "SAMU为18，欧洲紧急号码为3631",
+          "SAMU为119，欧洲紧急号码为114"
+        ],
+        answer: 0,
+        explanation: "Les numéros d'urgence gratuits en France sont : 15 (SAMU), 17 (Police secours), 18 (Pompiers), 112 (numéro d'urgence européen), 114 (urgence par SMS pour personnes sourdes ou malentendantes).",
+        explanation_zh: "法国免费紧急电话为：15（医疗急救SAMU）、17（报警电话）、18（消防急救）、112（欧洲通用紧急电话）、114（听障人士短信求救）。"
+      },
+      {
+        id: 73,
+        theme: 'societe',
+        isSituation: false,
+        q: "Qu'est-ce que le travail dissimulé (« travail au noir ») en France ?",
+        q_zh: "在法国，什么是“隐蔽用工（打黑工 / travail au noir）”？",
+        options: [
+          "Une pratique légale pour les petits travaux",
+          "Une infraction grave punie par la loi qui prive le salarié de protection sociale, d'assurance accident du travail et de droits à la retraite",
+          "Un contrat réservé aux étudiants",
+          "Une méthode autorisée pendant la période d'essai"
+        ],
+        options_zh: [
+          "针对零星工作的合法做法",
+          "受法律严惩的严重违法行为，使雇员丧失社会保障、工伤保险和养老金权益",
+          "专为学生保留的合同",
+          "试用期内允许的用工方式"
+        ],
+        answer: 1,
+        explanation: "Tout emploi salarié en France doit faire l'objet d'une déclaration préalable à l'embauche (DPAE) et d'un bulletin de paie. Le travail non déclaré est un délit pénal.",
+        explanation_zh: "在法国，任何雇佣关系都必须进行雇前申报（DPAE）并开具工资单。未申报的“打黑工”属于刑事犯罪。"
+      },
+      {
+        id: 74,
+        theme: 'societe',
+        isSituation: false,
+        q: "Qu'est-ce que la Protection universelle maladie (PUMa) et la carte Vitale ?",
+        q_zh: "什么是普遍医疗保障制度（PUMa）和医保绿卡（carte Vitale）？",
+        options: [
+          "Une assurance automobile obligatoire",
+          "Le dispositif de l'Assurance maladie qui garantit la prise en charge des frais de santé à toute personne travaillant ou résidant en France de manière stable et régulière",
+          "Une carte de réduction pour les musées nationaux",
+          "Un titre de transport régional"
+        ],
+        options_zh: [
+          "强制性汽车保险",
+          "法国医疗保险制度，保障所有在法国稳定合法工作或居住人士的医疗费用报销",
+          "国家博物馆折扣卡",
+          "大区交通卡"
+        ],
+        answer: 1,
+        explanation: "La PUMa garantit à toute personne résidant régulièrement en France la prise en charge d'une partie de ses dépenses de santé, attestée par la carte Vitale.",
+        explanation_zh: "普遍医疗保障制度（PUMa）保障所有合法常住法国的人士享有医疗费用报销权利，医保卡（carte Vitale）是其参保凭证。"
+      },
+      {
+        id: 75,
+        theme: 'societe',
+        isSituation: true,
+        q: "[Mise en situation] Un employeur vous propose de travailler sans contrat de travail ni fiche de paie en vous payant uniquement en espèces. Que devez-vous savoir ?",
+        q_zh: "【情景模拟】一位雇主提出不签劳动合同也不开工资单，仅用现金支付您工资。您必须了解什么？",
+        options: [
+          "C'est avantageux et tout à fait légal",
+          "C'est du travail illégal (dissimulé) : en cas d'accident du travail, vous ne serez pas couvert et cela peut nuire à votre droit au séjour",
+          "C'est obligatoire pendant les 6 premiers mois",
+          "Cela donne droit au chômage automatiquement"
+        ],
+        options_zh: [
+          "这很划算且完全合法",
+          "这是非法黑工：一旦发生工伤您将没有任何保险保障，且会严重影响您的合法居留权",
+          "前6个月必须这样做",
+          "这样会自动获得失业金权利"
+        ],
+        answer: 1,
+        explanation: "Exiger un contrat écrit ou une déclaration d'embauche protège le salarié : salaire minimum (SMIC), congés payés, couverture en cas d'accident du travail et cotisations retraite.",
+        explanation_zh: "要求签订书面合同或进行用工申报才能保护劳动者权益：最低工资保障（SMIC）、带薪年假、工伤保险以及养老金缴纳。"
+      },
+      {
+        id: 76,
+        theme: 'societe',
+        isSituation: true,
+        q: "[Mise en situation] Une personne est victime d'un malaise grave dans la rue. Vous appelez les secours. Quelles informations essentielles devez-vous donner ?",
+        q_zh: "【情景模拟】有人在街上突发严重不适晕倒。您拨打急救电话时，必须提供哪些关键信息？",
+        options: [
+          "Votre opinion politique et votre numéro fiscal",
+          "L'adresse précise du lieu, la nature du problème, l'état de la victime et ne jamais raccrocher le premier",
+          "Uniquement votre prénom puis raccrocher vite",
+          "Demander à la victime d'appeler elle-même"
+        ],
+        options_zh: [
+          "您的政治观点和税号",
+          "事发精确地址、事件性质、伤病员状况，且切勿先挂断电话",
+          "只报出自己的名字然后迅速挂断",
+          "让昏迷的伤病员自己打电话"
+        ],
+        answer: 1,
+        explanation: "Lors d'un appel au 15, 18 ou 112, il faut indiquer précisément où l'on se trouve, ce qu'il se passe, l'état de la personne et attendre que l'opérateur dise de raccrocher.",
+        explanation_zh: "拨打15、18或112急救电话时，必须准确说明所在位置、发生了什么、伤病员状态，并等待接线员指示后再挂断电话。"
+      },
+      {
+        id: 77,
+        theme: 'societe',
+        isSituation: false,
+        q: "En France, qu'est-ce que le secret médical ?",
+        q_zh: "在法国，什么是“医疗保密义务（secret médical）”？",
+        options: [
+          "Le droit pour un employeur de connaître les maladies de ses salariés",
+          "L'obligation légale pour tout professionnel de santé de ne pas divulguer les informations concernant la santé d'un patient",
+          "L'interdiction pour le patient de lire son propre dossier médical",
+          "Une règle qui ne s'applique qu'aux chirurgies"
+        ],
+        options_zh: [
+          "雇主了解员工病情的权利",
+          "所有医护人员的法定义务，不得向第三方泄露患者的健康隐私信息",
+          "禁止患者查阅自己的病历",
+          "仅适用于外科手术的规定"
+        ],
+        answer: 1,
+        explanation: "Le secret médical protège l'intimité et la dignité du patient. Aucun médecin ne peut révéler l'état de santé d'un patient à son employeur, son assureur ou des tiers sans son accord (sauf dérogations légales strictes).",
+        explanation_zh: "医疗保密原则保护患者的隐私和尊严。未经患者同意，任何医生不得向其雇主、保险公司或第三方透露其健康状况。"
+      },
+      {
+        id: 78,
+        theme: 'societe',
+        isSituation: false,
+        q: "Quelle est l'autorité administrative chargée de l'accompagnement des demandeurs d'emploi et de l'indemnisation du chômage en France ?",
+        q_zh: "在法国，负责指导求职者就业和发放失业救济金的公共机构是什么？",
+        options: [
+          "La Banque de France",
+          "France Travail (anciennement Pôle emploi)",
+          "La Caisse d'Allocations Familiales (CAF)",
+          "L'URSSAF"
+        ],
+        options_zh: [
+          "法兰西银行",
+          "法国就业局（France Travail，原名 Pôle emploi）",
+          "家庭津贴局（CAF）",
+          "社会保障及家庭津贴征收联合会（URSSAF）"
+        ],
+        answer: 1,
+        explanation: "Depuis le 1er janvier 2024, Pôle emploi est devenu France Travail : cet opérateur public accompagne les demandeurs d'emploi dans leur insertion professionnelle et verse les allocations chômage.",
+        explanation_zh: "自2024年1月1日起，原法国就业中心（Pôle emploi）更名为法国就业局（France Travail），负责协助求职者就业并发放失业津贴。"
+      },
+      {
+        id: 79,
+        theme: 'societe',
+        isSituation: true,
+        q: "[Mise en situation] Vous souhaitez inscrire votre enfant de 4 ans à l'école maternelle publique pour la première fois. Auprès de quel organisme devez-vous effectuer l'inscription ?",
+        q_zh: "【情景模拟】您希望为您4岁的孩子首次报名公立幼儿园。您应该向哪个机构办理入学登记？",
+        options: [
+          "Auprès du ministère de l'Éducation nationale à Paris",
+          "Auprès de la mairie de votre commune de résidence (puis admission auprès de la direction de l'école)",
+          "Auprès de la préfecture",
+          "Auprès de la Caisse Primaire d'Assurance Maladie"
+        ],
+        options_zh: [
+          "向巴黎的国民教育部",
+          "向居住地所在市镇的市政厅（随后前往学校校长处办理正式入园）",
+          "向省政府",
+          "向初级医疗保险局（CPAM）"
+        ],
+        answer: 1,
+        explanation: "L'inscription dans une école maternelle ou élémentaire publique s'effectue d'abord auprès du service scolaire de la mairie avec un justificatif de domicile, le livret de famille (ou acte de naissance) et le carnet de santé (vaccinations obligatoires).",
+        explanation_zh: "公立幼儿园或小学入学需首先携带居住证明、户口本（或出生证明）及健康手册（强制疫苗接种记录）前往居住地市政厅教育科登记。"
+      },
+      {
+        id: 80,
+        theme: 'societe',
+        isSituation: false,
+        q: "En France, pour conduire une voiture sur la voie publique, quels documents/conditions sont obligatoires ?",
+        q_zh: "在法国公共道路上驾驶汽车，哪些证件/条件是强制要求的？",
+        options: [
+          "Uniquement la carte grise du véhicule",
+          "Un permis de conduire valide, le certificat d'immatriculation (carte grise), une assurance automobile en cours de validité et un contrôle technique à jour (pour les véhicules de plus de 4 ans)",
+          "Une autorisation du maire de la commune",
+          "Un passeport uniquement"
+        ],
+        options_zh: [
+          "仅需车辆行驶证（灰卡）",
+          "有效的驾驶证、车辆登记证（灰卡）、有效的汽车保险以及有效年检（车龄超过4年的车辆）",
+          "市镇市长的书面许可",
+          "仅需护照"
+        ],
+        answer: 1,
+        explanation: "Conduire sans permis valide ou sans assurance est un délit pénal lourdement sanctionné en France. L'assurance responsabilité civile est obligatoire pour tout véhicule terrestre à moteur.",
+        explanation_zh: "在法国无有效驾照或无保险驾驶属于严重刑事犯罪。所有机动车辆都必须购买第三方责任险。"
+      }
+    ];
+
+    // =========================================================================
+    // 2. ÉTAT DE L'APPLICATION & SAUVEGARDE LOCALE
+    // =========================================================================
+    const STORAGE_KEY = 'examen_civique_2026_progress';
+    const OPTION_LETTERS = ['A', 'B', 'C', 'D'];
+    let masteredIds = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'));
+
+    // État Mode Examen Blanc
+    let examState = {
+      questions: [],
+      answers: {}, // { index: optionIndex }
+      currentIndex: 0,
+      timeLeft: 45 * 60,
+      timerInterval: null,
+      reviewFilter: 'all',
+      showZhInResults: true // Chinois simplifié activé par défaut dans le récapitulatif final
+    };
+
+    // État Mode Entraînement
+    let practiceState = {
+      themeFilter: 'all',
+      filteredQuestions: [...QUESTIONS],
+      currentIndex: 0,
+      answeredCurrent: false,
+      selectedOption: null,
+      sessionCorrect: 0,
+      sessionTotal: 0,
+      showZh: true
+    };
+
+    // État Mode Révision
+    let revisionThemeFilter = 'all';
+    let showAllExplanations = true;
+    let showAllRevisionOptions = false;
+// ... existing code ...
+      document.getElementById('exam-q-text').textContent = q.q.replace('[Mise en situation] ', '');
+
+      const optionsContainer = document.getElementById('exam-options');
+      optionsContainer.innerHTML = '';
+
+      q.options.forEach((optText, optIdx) => {
+        const isSelected = examState.answers[idx] === optIdx;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `w-full text-left p-4 rounded-xl border-2 transition flex items-start gap-3.5 ${
+          isSelected
+            ? 'border-marianne bg-marianne-light/70 text-slate-900 shadow-2xs'
+            : 'border-slate-200 hover:border-slate-300 bg-white text-slate-700'
+        }`;
+        btn.innerHTML = `
+          <span class="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-extrabold shrink-0 mt-0.5 ${
+            isSelected ? 'bg-marianne text-white' : 'bg-slate-100 text-slate-600'
+          }">${OPTION_LETTERS[optIdx]}</span>
+          <span class="text-sm sm:text-base font-medium leading-snug">${optText}</span>
+        `;
+        btn.onclick = () => {
+          examState.answers[idx] = optIdx;
+          renderExamQuestion();
+          renderExamGridNav();
+        };
+        optionsContainer.appendChild(btn);
+      });
+// ... existing code ... -->
+    function renderExamReviewList() {
+      const list = document.getElementById('exam-review-list');
+      list.innerHTML = '';
+      const showZh = examState.showZhInResults;
+
+      examState.questions.forEach((q, idx) => {
+        const userAns = examState.answers[idx];
+        const isCorrect = userAns === q.answer;
+        if (examState.reviewFilter === 'wrong' && isCorrect) return;
+        if (examState.reviewFilter === 'correct' && !isCorrect) return;
+
+        const item = document.createElement('div');
+        item.className = `review-item-card p-5 sm:p-6 rounded-2xl border-2 ${
+          isCorrect ? 'border-emerald-200 bg-white' : 'border-red-200 bg-red-50/15'
+        }`;
+
+        // Construction des 4 propositions A, B, C, D en français + chinois simplifié
+        const optionsHtml = q.options.map((optText, optIdx) => {
+          const isGoodOpt = optIdx === q.answer;
+          const isUserOpt = optIdx === userAns;
+
+          let rowStyle = 'border-slate-200 bg-slate-50/60 text-slate-700';
+          let badgeStyle = 'bg-slate-200 text-slate-700';
+          let tags = '';
+
+          if (isGoodOpt) {
+            rowStyle = 'border-emerald-500 bg-emerald-50 text-emerald-950 font-semibold';
+            badgeStyle = 'bg-emerald-600 text-white';
+            tags += `<span class="px-2 py-0.5 rounded bg-emerald-600 text-white text-[10px] font-bold uppercase">Bonne réponse${showZh ? ' / 正确答案' : ''}</span>`;
+          }
+          if (isUserOpt && !isGoodOpt) {
+            rowStyle = 'border-franceRed bg-red-50 text-red-950 font-semibold';
+            badgeStyle = 'bg-franceRed text-white';
+            tags += `<span class="px-2 py-0.5 rounded bg-franceRed text-white text-[10px] font-bold uppercase">Votre choix${showZh ? ' / 您的选择' : ''}</span>`;
+          } else if (isUserOpt && isGoodOpt) {
+            tags += `<span class="px-2 py-0.5 rounded bg-marianne text-white text-[10px] font-bold uppercase">Votre choix${showZh ? ' / 您的选择' : ''}</span>`;
+          }
+
+          return `
+            <div class="p-3 rounded-xl border ${rowStyle} flex items-start justify-between gap-3">
+              <div class="flex items-start gap-2.5">
+                <span class="w-6 h-6 rounded-md flex items-center justify-center text-xs font-extrabold shrink-0 mt-0.5 ${badgeStyle}">
+                  ${OPTION_LETTERS[optIdx]}
+                </span>
+                <div class="text-xs sm:text-sm leading-snug">
+                  <div>${optText}</div>
+                  ${showZh ? `<div class="text-slate-600 font-normal mt-0.5">${q.options_zh[optIdx]}</div>` : ''}
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-1 shrink-0 justify-end">${tags}</div>
+            </div>
+          `;
+        }).join('');
+// ... existing code ... -->
+      const optionsDiv = document.getElementById('prac-options');
+      optionsDiv.innerHTML = '';
+
+      q.options.forEach((optText, optIdx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+
+        let btnStyle = 'border-slate-200 hover:border-marianne bg-white text-slate-800';
+        let badgeStyle = 'bg-slate-100 text-slate-600';
+
+        if (practiceState.answeredCurrent) {
+          if (optIdx === q.answer) {
+            btnStyle = 'border-emerald-500 bg-emerald-50 text-emerald-950 font-semibold';
+            badgeStyle = 'bg-emerald-600 text-white';
+          } else if (optIdx === practiceState.selectedOption) {
+            btnStyle = 'border-franceRed bg-red-50 text-red-950';
+            badgeStyle = 'bg-franceRed text-white';
+          } else {
+            btnStyle = 'border-slate-200 bg-slate-50 text-slate-400 opacity-75';
+          }
+        }
+
+        btn.className = `w-full text-left p-4 rounded-xl border-2 transition flex items-start gap-3.5 ${btnStyle}`;
+        btn.disabled = practiceState.answeredCurrent;
+        btn.innerHTML = `
+          <span class="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-extrabold shrink-0 mt-0.5 ${badgeStyle}">${OPTION_LETTERS[optIdx]}</span>
+          <div class="text-sm sm:text-base leading-snug">
+            <div>${optText}</div>
+            ${practiceState.showZh ? `<div class="text-xs sm:text-sm text-slate-500 font-normal mt-0.5">${q.options_zh[optIdx]}</div>` : ''}
+          </div>
+        `;
+        btn.onclick = () => handlePracticeAnswer(optIdx);
+        optionsDiv.appendChild(btn);
+      });
+// ... existing code ... -->
+    function renderRevisionList() {
+      const searchVal = (document.getElementById('revision-search')?.value || '').toLowerCase().trim();
+      const listContainer = document.getElementById('revision-list');
+      listContainer.innerHTML = '';
+
+      const filtered = QUESTIONS.filter(q => {
+// ... existing code ... -->
+        const allChoicesHtml = showAllRevisionOptions ? `
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 my-3">
+            ${q.options.map((opt, i) => `
+              <div class="p-2.5 rounded-lg border text-xs ${i === q.answer ? 'border-emerald-400 bg-emerald-50/70 text-emerald-950 font-semibold' : 'border-slate-200 bg-slate-50 text-slate-600'}">
+                <span class="font-bold mr-1">${OPTION_LETTERS[i]}.</span> ${opt}
+                <div class="text-slate-500 font-normal mt-0.5">${q.options_zh[i]}</div>
+              </div>
+            `).join('')}
+          </div>
+        ` : '';
+// ... existing code ... -->
